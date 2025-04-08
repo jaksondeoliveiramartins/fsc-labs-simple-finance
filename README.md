@@ -26,6 +26,7 @@ Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela 
    `git checkout -b minha-feature`
 3. Implemente sua solução
 4. Envie uma PR (Pull Request) com uma descrição clara do que foi feito
+5. Verifique se sua branch está atualizada com a branch main do repositório original (upstream), e não apenas com a main do seu fork.
 
 ### 📌 Boas práticas
 
