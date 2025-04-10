@@ -5,7 +5,7 @@ Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela 
 ### 🔗 Recursos úteis
 
 - **Documentação da API**: https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/docs/
-
+- **Diagrama de relacionamentos do banco de dados**: https://app.eraser.io/workspace/48KWxwoius3t7GsAvPls
 - **Protótipo no Figma**: [Mobile](https://www.figma.com/design/vWD3LR5j635P3xFCXBJxyc/Dashboard-Financeira?node-id=102-97&p=f&t=RxZ0kY3LHHV29KDZ-0) | [Desktop](https://www.figma.com/design/vWD3LR5j635P3xFCXBJxyc/Dashboard-Financeira?node-id=0-1&p=f&t=RxZ0kY3LHHV29KDZ-0)
 - **Guia de convenções para commits**: https://www.conventionalcommits.org/
 
