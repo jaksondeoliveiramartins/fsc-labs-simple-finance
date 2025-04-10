@@ -7,6 +7,7 @@ Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela 
 - **Documentação da API**: https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/docs/
 
 - **Protótipo no Figma**: [Mobile](https://www.figma.com/design/vWD3LR5j635P3xFCXBJxyc/Dashboard-Financeira?node-id=102-97&p=f&t=RxZ0kY3LHHV29KDZ-0) | [Desktop](https://www.figma.com/design/vWD3LR5j635P3xFCXBJxyc/Dashboard-Financeira?node-id=0-1&p=f&t=RxZ0kY3LHHV29KDZ-0)
+- **Guia de convenções para commits**: https://www.conventionalcommits.org/
 
 ### 🛠️ Tecnologias previstas
 
@@ -31,9 +32,10 @@ Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela 
 ### 📌 Boas práticas
 
 - Siga o protótipo disponível no Figma.
+- Sempre relacione sua PR a uma issue existente.
+- Sempre utilize o padrão de conveções para os commits.
 - Use componentes reutilizáveis sempre que possível.
 - Mantenha o código limpo e organizado.
-- Sempre relacione sua PR a uma issue existente.
 
 ### 💬 Dúvidas
 
