@@ -161,7 +161,7 @@ export default function SignUp() {
                 className="flex items-center justify-center"
               >
                 <Image
-                  src="/images/f.svg"
+                  src="/images/facebook.svg"
                   alt="Facebook"
                   width={12}
                   height={12}
