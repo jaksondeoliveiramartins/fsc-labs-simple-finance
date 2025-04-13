@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Button } from "../components/ui/Button";
-import { Input } from "../components/ui/Input";
-import { Label } from "../components/ui/Label";
+import { Input } from "../_lib/components/ui/input";
+import { Label } from "../_lib/components/ui/label";
+import { Button } from "../_lib/components/ui/button";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
