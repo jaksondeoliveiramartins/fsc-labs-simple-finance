@@ -11,6 +11,49 @@ import { Label } from "../components/ui/Label";
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.password != form.confirmPassword) {
+      alert("As senhas não são idênticas.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name: form.first_name,
+          last_name: form.last_name,
+          email: form.email,
+          password: form.password,
+        }),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        alert(`Erro: ${error.message || "Não foi possível criar a conta"}`);
+      } else {
+        alert("Conta criada com sucesso!");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar dados", error);
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-[#141414] px-4 pt-8">
@@ -43,53 +86,78 @@ export default function SignUp() {
         </div>
 
         {/* Form */}
-        <form className="mt-2 space-y-6">
+        <form className="mt-2 space-y-6" onSubmit={handleSubmit}>
           <div className="relative">
             <Input
-              id="name"
+              id="first_name"
+              name="first_name"
               type="text"
+              value={form.first_name}
+              onChange={handleChange}
               required
-              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+              className="peer h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
               placeholder="Nome"
             />
             <Label
-              htmlFor="name"
-              className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-            >
-              Nome
-            </Label>
+              htmlFor="first_name"
+              className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
+            ></Label>
+          </div>
+
+          <div className="relative">
+            <Input
+              id="last_name"
+              name="last_name"
+              type="text"
+              value={form.last_name}
+              onChange={handleChange}
+              required
+              className="peer h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
+              placeholder="Sobrenome"
+            />
+
+            <Label
+              htmlFor="last_name"
+              className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
+            ></Label>
           </div>
 
           <div className="relative">
             <Input
               id="email"
-              type="email"
+              name="email"
+              type="text"
+              value={form.email}
+              onChange={handleChange}
               required
-              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
-              placeholder="Email"
+              className="peer h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
+              placeholder="E-mail"
             />
+
             <Label
               htmlFor="email"
-              className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-            >
-              Email
-            </Label>
+              className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
+            ></Label>
           </div>
 
           <div className="relative">
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
+              value={form.password}
+              onChange={handleChange}
               required
               className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
               placeholder="Senha"
             />
-            <Label
-              htmlFor="password"
-              className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-            >
-              Senha
-            </Label>
+            {form.password === "" && (
+              <Label
+                htmlFor="password"
+                className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
+              >
+                Senha
+              </Label>
+            )}
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
@@ -107,16 +175,20 @@ export default function SignUp() {
             <Input
               id="confirmPassword"
               type={showConfirmPassword ? "text" : "password"}
+              value={form.confirmPassword}
+              onChange={handleChange}
               required
               className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
               placeholder="Confirme a senha"
             />
-            <Label
-              htmlFor="confirmPassword"
-              className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-            >
-              Confirme a senha
-            </Label>
+            {form.confirmPassword === "" && (
+              <Label
+                htmlFor="confirmPassword"
+                className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
+              >
+                Confirmar Senha
+              </Label>
+            )}
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -133,6 +205,7 @@ export default function SignUp() {
           <Button
             type="submit"
             className="h-[62px] w-full cursor-pointer rounded-[12px] bg-green-600 text-white transition-colors duration-200 hover:bg-green-700"
+            onClick={handleSubmit}
           >
             Criar Conta
           </Button>
