@@ -95,7 +95,7 @@ export default function SignUp() {
               value={form.first_name}
               onChange={handleChange}
               required
-              className="peer h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
+              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
               placeholder="Nome"
             />
             <Label
@@ -112,7 +112,7 @@ export default function SignUp() {
               value={form.last_name}
               onChange={handleChange}
               required
-              className="peer h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
+              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
               placeholder="Sobrenome"
             />
 
@@ -130,7 +130,7 @@ export default function SignUp() {
               value={form.email}
               onChange={handleChange}
               required
-              className="peer h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
+              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
               placeholder="E-mail"
             />
 
