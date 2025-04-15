@@ -36,11 +36,21 @@ export default function SignUp() {
       <form className="mb-[50px] w-full space-y-[20px]">
         <div className="relative">
           <Input
-            id="name"
+            id="first_name"
             type="text"
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Nome"
+            placeholder="Primeiro nome"
+          />
+        </div>
+
+        <div className="relative">
+          <Input
+            id="last_name"
+            type="text"
+            required
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Sobrenome"
           />
         </div>
 
