@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Input } from "../_lib/components/ui/input";
 import { Label } from "../_lib/components/ui/label";
 import { Button } from "../_lib/components/ui/button";
+import Logo from "../_components/logo";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,14 +17,7 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col items-center">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Image
-          src="/images/logo.svg"
-          alt="Logo"
-          width={330}
-          height={26}
-          priority
-          className="mb-[50px]"
-        />
+        <Logo className="mb-[50px]" />
 
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
           Criar sua conta
