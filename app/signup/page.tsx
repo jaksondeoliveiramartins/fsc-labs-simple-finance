@@ -87,7 +87,7 @@ export default function SignUp() {
 
         <div className="relative">
           <Input
-            id="confirmPassword"
+            id="confirm_password"
             type={showConfirmPassword ? "text" : "password"}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
