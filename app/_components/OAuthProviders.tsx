@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "../_lib/components/ui/button";
 import Image from "next/image";
 
-export function OtherLoginMethods() {
+export function OAuthProviders() {
   return (
     <div className="flex w-full flex-col gap-10">
       <div className="flex w-full items-center text-xs text-gray-400 uppercase">

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
-import Logo from "../_components/logo";
+import Logo from "../_components/Logo";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);

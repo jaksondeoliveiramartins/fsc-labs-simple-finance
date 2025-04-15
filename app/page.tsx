@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "./_lib/components/ui/button";
-import Logo from "./_components/logo";
+import Logo from "./_components/Logo";
 import Link from "next/link";
 
 const Home = () => {

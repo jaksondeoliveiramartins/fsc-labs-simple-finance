@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "../_components/logo";
-import { OtherLoginMethods } from "../_components/OtherLoginMethods";
-import { PasswordInput } from "../_components/password-input";
+import Logo from "../_components/Logo";
+import { OAuthProviders } from "../_components/OAuthProviders";
+import { PasswordInput } from "../_components/PasswordInput";
 import { Button } from "../_lib/components/ui/button";
 import { Input } from "../_lib/components/ui/input";
 
@@ -27,8 +27,8 @@ export default function SignUp() {
         </p>
       </div>
 
-      <div className="flex min-h-[500px] flex-col justify-between">
-        <form className="w-full flex-1 space-y-5">
+      <div className="flex flex-col justify-between space-y-[50px]">
+        <form className="w-full space-y-5">
           <div className="relative">
             <Input
               id="email"
@@ -49,7 +49,7 @@ export default function SignUp() {
           </Button>
         </form>
 
-        <OtherLoginMethods />
+        <OAuthProviders />
       </div>
     </main>
   );
