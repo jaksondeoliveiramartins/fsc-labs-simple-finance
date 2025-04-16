@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
 import Logo from "../_components/Logo";
-import { useAuthContext } from "../contexts/auth";
+import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../forms/schemas/user";
 import { z } from "zod";

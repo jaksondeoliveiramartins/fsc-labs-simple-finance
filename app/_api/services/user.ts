@@ -1,4 +1,4 @@
-import { protectedApi, publicApi } from "../../lib/axios";
+import { protectedApi, publicApi } from "../../_lib/axios";
 
 export interface SignupInput {
   firstName: string;

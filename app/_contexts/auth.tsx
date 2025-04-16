@@ -3,8 +3,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
-import { useLogin, useSignup } from "../api/hooks/user";
-import { UserService } from "../api/services/user";
+import { useLogin, useSignup } from "../_api/hooks/user";
+import { UserService } from "../_api/services/user";
 import {
   LOCAL_STORAGE_ACCESS_TOKEN_KEY,
   LOCAL_STORAGE_REFRESH_TOKEN_KEY,
@@ -13,7 +13,7 @@ import type {
   SignupInput,
   LoginInput,
   UserResponse,
-} from "../api/services/user";
+} from "../_api/services/user";
 
 interface AuthContextType {
   user: UserResponse | null;

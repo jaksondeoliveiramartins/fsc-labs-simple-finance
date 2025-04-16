@@ -5,7 +5,7 @@ import Logo from "../_components/Logo";
 import { OAuthProviders } from "../_components/OAuthProviders";
 import { Button } from "../_lib/components/ui/button";
 import { Input } from "../_lib/components/ui/input";
-import { useAuthContext } from "../contexts/auth";
+import { useAuthContext } from "../_contexts/auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "../forms/schemas/user";

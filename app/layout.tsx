@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ClientProvider from "./ClientProvider";
+import ClientProvider from "./_contexts/ClientProvider";
 import React from "react";
 import { Toaster } from "sonner";
-import { AuthContextProvider } from "./contexts/auth";
+import { AuthContextProvider } from "./_contexts/auth";
 
 const inter = Inter({
   subsets: ["latin-ext"],
