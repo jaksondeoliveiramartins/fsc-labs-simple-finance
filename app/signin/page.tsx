@@ -27,8 +27,8 @@ export default function SignUp() {
         </p>
       </div>
 
-      <div className="flex flex-col justify-between space-y-[50px]">
-        <form className="w-full space-y-5">
+      <div className="flex w-full flex-col justify-between space-y-[50px]">
+        <form className="space-y-5">
           <div className="relative">
             <Input
               id="email"
