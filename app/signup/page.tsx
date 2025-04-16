@@ -10,7 +10,7 @@ import { Button } from "../_lib/components/ui/button";
 import Logo from "../_components/Logo";
 import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signupFormSchema } from "../forms/schemas/user";
+import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;

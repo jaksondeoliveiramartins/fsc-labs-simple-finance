@@ -8,7 +8,7 @@ import { Input } from "../_lib/components/ui/input";
 import { useAuthContext } from "../_contexts/auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginFormSchema } from "../forms/schemas/user";
+import { loginFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
