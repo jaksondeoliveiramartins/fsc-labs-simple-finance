@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode, useState } from "react";
+import ClientProvider from "./ClientProvider";
+import React from "react";
+import { Toaster } from "sonner";
+import { AuthContextProvider } from "./contexts/auth";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -16,18 +18,22 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: ReactNode;
+  children: React.ReactNode;
 }>) {
-  const [queryClient] = useState(() => new QueryClient());
-
   return (
     <html lang="pt-BR">
       <body className={`${inter.className}`} cz-shortcut-listen="false">
-        <QueryClientProvider client={queryClient}>
-          <div className="max-w-[390px] p-[30px]" style={{ margin: "0 auto" }}>
-            {children}
-          </div>
-        </QueryClientProvider>
+        <ClientProvider>
+          <AuthContextProvider>
+            <Toaster />
+            <div
+              className="max-w-[390px] p-[30px]"
+              style={{ margin: "0 auto" }}
+            >
+              {children}
+            </div>
+          </AuthContextProvider>
+        </ClientProvider>
       </body>
     </html>
   );

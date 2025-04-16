@@ -13,7 +13,6 @@ export const loginFormSchema = z.object({
   password: z.string().trim().min(6, {
     message: "A senha deve ter no minímo 6 caracteres",
   }),
-  terms: z.boolean().optional(),
 });
 
 export const signupFormSchema = z
@@ -38,9 +37,6 @@ export const signupFormSchema = z
     }),
     passwordConfirmation: z.string().trim().min(6, {
       message: "A confirmação da senha é obrigatória",
-    }),
-    terms: z.boolean().refine((value) => value === true, {
-      message: "Você precisa aceitar os termos",
     }),
   })
   .refine(

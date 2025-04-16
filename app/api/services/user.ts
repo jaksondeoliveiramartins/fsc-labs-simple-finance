@@ -36,6 +36,9 @@ export const UserService = {
       email: input.email,
       password: input.password,
     });
+
+    console.log("Resposta da API no signup:", response.data);
+
     return {
       id: response.data.id,
       email: response.data.email,
