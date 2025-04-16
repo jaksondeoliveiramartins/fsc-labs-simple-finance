@@ -4,13 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
 import Logo from "../_components/Logo";
+import { useAuthContext } from "../contexts/auth";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signupFormSchema } from "../forms/schemas/user";
+import { z } from "zod";
+
+type SignUpFormData = z.infer<typeof signupFormSchema>;
 
 export default function SignUp() {
+  const { signup } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpFormData>({
+    resolver: zodResolver(signupFormSchema),
+  });
+
+  const onSubmit = async (data: SignUpFormData) => {
+    if (data.password !== data.passwordConfirmation) {
+      return;
+    }
+
+    try {
+      const response = await signup({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.password,
+      });
+
+      console.log("Cadastro realizado com sucesso:", response);
+    } catch (error) {
+      console.error("Erro ao realizar o cadastro:", error);
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
@@ -33,77 +68,101 @@ export default function SignUp() {
       </div>
 
       {/* Form */}
-      <form className="mb-[50px] w-full space-y-[20px]">
+      <form
+        className="mb-[50px] w-full space-y-[20px]"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="relative">
           <Input
-            id="first_name"
+            id="firstName"
             type="text"
-            required
+            {...register("firstName")}
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Primeiro nome"
           />
+          {errors.firstName && (
+            <p className="text-sm text-red-500">{errors.firstName.message}</p>
+          )}
         </div>
 
         <div className="relative">
           <Input
-            id="last_name"
+            id="lastName"
             type="text"
-            required
+            {...register("lastName")}
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Sobrenome"
           />
+          {errors.lastName && (
+            <p className="text-sm text-red-500">{errors.lastName.message}</p>
+          )}
         </div>
 
         <div className="relative">
           <Input
             id="email"
             type="email"
-            required
+            {...register("email")}
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Email"
           />
+          {errors.email && (
+            <p className="text-sm text-red-500">{errors.email.message}</p>
+          )}
         </div>
 
-        <div className="relative">
-          <Input
-            id="password"
-            type={showPassword ? "text" : "password"}
-            required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Senha"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
-          >
-            {showPassword ? (
-              <Eye className="h-4 w-4" />
-            ) : (
-              <EyeOff className="h-4 w-4" />
-            )}
-          </button>
+        <div>
+          <div className="relative">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              {...register("password")}
+              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+              placeholder="Senha"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+            >
+              {showPassword ? (
+                <Eye className="h-4 w-4" />
+              ) : (
+                <EyeOff className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+          {errors.password && (
+            <p className="text-sm text-red-500">{errors.password.message}</p>
+          )}
         </div>
 
-        <div className="relative">
-          <Input
-            id="confirm_password"
-            type={showConfirmPassword ? "text" : "password"}
-            required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Confirme a senha"
-          />
-          <button
-            type="button"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
-          >
-            {showConfirmPassword ? (
-              <Eye className="h-4 w-4" />
-            ) : (
-              <EyeOff className="h-4 w-4" />
-            )}
-          </button>
+        <div>
+          <div className="relative">
+            <Input
+              id="passwordConfirmation"
+              type={showConfirmPassword ? "text" : "password"}
+              {...register("passwordConfirmation")}
+              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+              placeholder="Confirme a senha"
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+            >
+              {showConfirmPassword ? (
+                <Eye className="h-4 w-4" />
+              ) : (
+                <EyeOff className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+          {errors.passwordConfirmation && (
+            <p className="text-sm text-red-500">
+              {errors.passwordConfirmation.message}
+            </p>
+          )}
         </div>
 
         <Button
