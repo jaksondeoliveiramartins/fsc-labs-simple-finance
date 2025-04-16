@@ -8,7 +8,7 @@ import { UserService } from "../_api/services/user";
 import {
   LOCAL_STORAGE_ACCESS_TOKEN_KEY,
   LOCAL_STORAGE_REFRESH_TOKEN_KEY,
-} from "../constants/local-storage";
+} from "../_constants/local-storage";
 import type {
   SignupInput,
   LoginInput,

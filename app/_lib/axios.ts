@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   LOCAL_STORAGE_ACCESS_TOKEN_KEY,
   LOCAL_STORAGE_REFRESH_TOKEN_KEY,
-} from "../constants/local-storage";
+} from "../_constants/local-storage";
 
 export const protectedApi = axios.create({
   baseURL: "https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/api",
