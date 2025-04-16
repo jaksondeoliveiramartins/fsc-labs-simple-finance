@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
-import Logo from "../_components/logo";
+import Logo from "../_components/Logo";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -70,7 +70,7 @@ export default function SignUp() {
         <p className="text-sm font-normal">
           Se já possui uma conta, você consegue fazer{" "}
           <Link
-            href="/login"
+            href="/signin"
             className="font-semibold text-green-500 underline decoration-green-500 underline-offset-4 hover:text-green-400"
           >
             Login aqui!

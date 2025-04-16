@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "./_lib/components/ui/button";
-import Logo from "./_components/logo";
+import Logo from "./_components/Logo";
 import Link from "next/link";
 
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
           </span>
         </Button>
       </Link>
-      <Link href="/login" passHref>
+      <Link href="/signin" passHref>
         <Button
           className="mb-5 min-h-[62px] cursor-pointer bg-[#242424] py-[22px] hover:bg-stone-900"
           asChild
