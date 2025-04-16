@@ -11,6 +11,52 @@ import Logo from "../_components/Logo";
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.password != form.confirm_password) {
+      alert("As senhas não são idênticas.");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/api/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first_name: form.first_name,
+            last_name: form.last_name,
+            email: form.email,
+            password: form.password,
+          }),
+        },
+      );
+      if (!response.ok) {
+        const error = await response.json();
+        alert(`Erro: ${error.message || "Não foi possível criar a conta"}`);
+      } else {
+        alert("Conta criada com sucesso!");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar dados", error);
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
@@ -33,11 +79,13 @@ export default function SignUp() {
       </div>
 
       {/* Form */}
-      <form className="mb-[50px] w-full space-y-[20px]">
+      <form className="mb-[50px] w-full space-y-[20px]" onSubmit={handleSubmit}>
         <div className="relative">
           <Input
             id="first_name"
             type="text"
+            value={form.first_name}
+            onChange={handleChange}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Primeiro nome"
@@ -48,6 +96,8 @@ export default function SignUp() {
           <Input
             id="last_name"
             type="text"
+            value={form.last_name}
+            onChange={handleChange}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Sobrenome"
@@ -58,6 +108,8 @@ export default function SignUp() {
           <Input
             id="email"
             type="email"
+            value={form.email}
+            onChange={handleChange}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Email"
@@ -68,6 +120,8 @@ export default function SignUp() {
           <Input
             id="password"
             type={showPassword ? "text" : "password"}
+            value={form.password}
+            onChange={handleChange}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Senha"
@@ -89,6 +143,8 @@ export default function SignUp() {
           <Input
             id="confirm_password"
             type={showConfirmPassword ? "text" : "password"}
+            value={form.confirm_password}
+            onChange={handleChange}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Confirme a senha"
