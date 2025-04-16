@@ -16,7 +16,7 @@ export default function SignUp() {
     last_name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirm_password: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,7 @@ export default function SignUp() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (form.password != form.confirmPassword) {
+    if (form.password != form.confirm_password) {
       alert("As senhas não são idênticas.");
       return;
     }
@@ -143,7 +143,7 @@ export default function SignUp() {
           <Input
             id="confirm_password"
             type={showConfirmPassword ? "text" : "password"}
-            value={form.confirmPassword}
+            value={form.confirm_password}
             onChange={handleChange}
             required
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
