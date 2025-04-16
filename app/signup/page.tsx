@@ -19,6 +19,52 @@ export default function SignUp() {
   const { signup } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.password != form.confirm_password) {
+      alert("As senhas não são idênticas.");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/api/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first_name: form.first_name,
+            last_name: form.last_name,
+            email: form.email,
+            password: form.password,
+          }),
+        },
+      );
+      if (!response.ok) {
+        const error = await response.json();
+        alert(`Erro: ${error.message || "Não foi possível criar a conta"}`);
+      } else {
+        alert("Conta criada com sucesso!");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar dados", error);
+    }
+  };
 
   const {
     register,
@@ -68,15 +114,25 @@ export default function SignUp() {
       </div>
 
       {/* Form */}
+ add-implement
       <form
         className="mb-[50px] w-full space-y-[20px]"
         onSubmit={handleSubmit(onSubmit)}
       >
+
+      <form className="mb-[50px] w-full space-y-[20px]" onSubmit={handleSubmit}>
+ main
         <div className="relative">
           <Input
             id="firstName"
             type="text"
+ add-implement
             {...register("firstName")}
+
+            value={form.first_name}
+            onChange={handleChange}
+            required
+ main
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Primeiro nome"
           />
@@ -89,7 +145,13 @@ export default function SignUp() {
           <Input
             id="lastName"
             type="text"
-            {...register("lastName")}
+ add-implement
+            {...register("lastName")
+         
+            value={form.last_name}
+            onChange={handleChange}
+            required
+ main
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Sobrenome"
           />
@@ -102,7 +164,13 @@ export default function SignUp() {
           <Input
             id="email"
             type="email"
+ add-implement
             {...register("email")}
+
+            value={form.email}
+            onChange={handleChange}
+            required
+ main
             className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Email"
           />
@@ -111,6 +179,7 @@ export default function SignUp() {
           )}
         </div>
 
+ add-implement
         <div>
           <div className="relative">
             <Input
@@ -163,6 +232,52 @@ export default function SignUp() {
               {errors.passwordConfirmation.message}
             </p>
           )}
+=======
+        <div className="relative">
+          <Input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            value={form.password}
+            onChange={handleChange}
+            required
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Senha"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+          >
+            {showPassword ? (
+              <Eye className="h-4 w-4" />
+            ) : (
+              <EyeOff className="h-4 w-4" />
+            )}
+          </button>
+        </div>
+
+        <div className="relative">
+          <Input
+            id="confirm_password"
+            type={showConfirmPassword ? "text" : "password"}
+            value={form.confirm_password}
+            onChange={handleChange}
+            required
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Confirme a senha"
+          />
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+          >
+            {showConfirmPassword ? (
+              <Eye className="h-4 w-4" />
+            ) : (
+              <EyeOff className="h-4 w-4" />
+            )}
+          </button>
+ main
         </div>
 
         <Button
