@@ -32,18 +32,21 @@ export default function SignUp() {
     }
 
     try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/api/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first_name: form.first_name,
+            last_name: form.last_name,
+            email: form.email,
+            password: form.password,
+          }),
         },
-        body: JSON.stringify({
-          first_name: form.first_name,
-          last_name: form.last_name,
-          email: form.email,
-          password: form.password,
-        }),
-      });
+      );
       if (!response.ok) {
         const error = await response.json();
         alert(`Erro: ${error.message || "Não foi possível criar a conta"}`);
