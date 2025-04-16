@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "../_lib/components/ui/input";
-import { Label } from "../_lib/components/ui/label";
 import { Button } from "../_lib/components/ui/button";
+import Logo from "../_components/logo";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -59,14 +59,7 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col items-center">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Image
-          src="/images/logo.svg"
-          alt="Logo"
-          width={330}
-          height={26}
-          priority
-          className="mb-[50px]"
-        />
+        <Logo className="mb-[50px]" />
 
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
           Criar sua conta
@@ -87,36 +80,23 @@ export default function SignUp() {
         <div className="relative">
           <Input
             id="first_name"
-            name="first_name"
             type="text"
-            value={form.first_name}
-            onChange={handleChange}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
-            placeholder="Nome"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Primeiro nome"
           />
-          <Label
-            htmlFor="first_name"
-            className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
-          ></Label>
         </div>
 
         <div className="relative">
           <Input
             id="last_name"
-            name="last_name"
             type="text"
-            value={form.last_name}
+            value={form.first_name}
             onChange={handleChange}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Sobrenome"
           />
-
-          <Label
-            htmlFor="last_name"
-            className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
-          ></Label>
         </div>
 
         <div className="relative">
@@ -127,14 +107,9 @@ export default function SignUp() {
             value={form.email}
             onChange={handleChange}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder-transparent focus:outline-none"
-            placeholder="E-mail"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Email"
           />
-
-          <Label
-            htmlFor="email"
-            className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
-          ></Label>
         </div>
 
         <div className="relative">
@@ -144,17 +119,9 @@ export default function SignUp() {
             value={form.password}
             onChange={handleChange}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Senha"
           />
-          {form.password === "" && (
-            <Label
-              htmlFor="password"
-              className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
-            >
-              Senha
-            </Label>
-          )}
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
@@ -170,22 +137,14 @@ export default function SignUp() {
 
         <div className="relative">
           <Input
-            id="confirmPassword"
+            id="confirm_password"
             type={showConfirmPassword ? "text" : "password"}
             value={form.confirmPassword}
             onChange={handleChange}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Confirme a senha"
           />
-          {form.confirmPassword === "" && (
-            <Label
-              htmlFor="confirmPassword"
-              className="pointer-events-none absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all duration-200"
-            >
-              Confirmar Senha
-            </Label>
-          )}
           <button
             type="button"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
