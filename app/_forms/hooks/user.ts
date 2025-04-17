@@ -9,7 +9,6 @@ export const useLoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
-      terms: false,
     },
   });
   return { form };
@@ -24,7 +23,6 @@ export const useSignupForm = () => {
       email: "",
       password: "",
       passwordConfirmation: "",
-      terms: false,
     },
   });
   return { form };
