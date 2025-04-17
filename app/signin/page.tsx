@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Logo from "../_components/Logo";
+import { useRouter } from "next/navigation";
 import { OAuthProviders } from "../_components/OAuthProviders";
 import { Button } from "../_lib/components/ui/button";
 import { Input } from "../_lib/components/ui/input";
@@ -11,12 +12,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
 export default function SignIn() {
-  const { login, isInitializing } = useAuthContext();
+  const router = useRouter();
+  const { user, login, isInitializing } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -24,7 +26,7 @@ export default function SignIn() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>({
-    resolver: zodResolver(loginFormSchema), // Integração com o zod
+    resolver: zodResolver(loginFormSchema),
   });
 
   const onSubmit = async (data: LoginFormData) => {
@@ -34,6 +36,12 @@ export default function SignIn() {
       console.error("Erro ao realizar o login:", error);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user, router]);
 
   if (isInitializing) {
     return <div>Carregando...</div>;
