@@ -10,8 +10,13 @@ const Home = () => {
   return (
     <main className="flex w-full flex-col">
       <div className="flex flex-row">
+<<<<<<< HEAD
         <Logo className="mb-[50px] " />
         <span>
+=======
+        <Logo className="mb-[50px] rounded-full	bg-slate-500 font-semibold" />
+        <span className="ml-2">
+>>>>>>> e80bbab (feat: integrate Logo and ModeTheme components into login and home pages)
           <ModeTheme />
         </span>
       </div>
