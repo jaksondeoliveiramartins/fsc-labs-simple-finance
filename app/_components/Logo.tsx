@@ -1,20 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface LogoProps {
-  className?: string;
+interface LogoTheme {
+  isDark: boolean;
 }
 
-const Logo = ({ className }: LogoProps) => {
+const Logo = ({ isDark }: LogoTheme) => {
   return (
     <Link href="/">
       <Image
-        src="/images/logo.svg"
-        width={330}
+        src={`/images/logo-${isDark ? "dark" : "light"}.svg`}
+        width={166}
         height={26}
         alt="Logo Simple Finance"
         priority
-        className={className}
       />
     </Link>
   );

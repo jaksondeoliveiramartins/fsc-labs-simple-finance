@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "../_components/Logo";
 import { OAuthProviders } from "../_components/OAuthProviders";
 import { Button } from "../_lib/components/ui/button";
 import { Input } from "../_lib/components/ui/input";
@@ -12,6 +11,7 @@ import { loginFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import ThemeToggleBar from "../_components/ThemeToggle";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -42,16 +42,16 @@ export default function SignIn() {
   return (
     <main className="flex h-full flex-col items-center space-y-12">
       <div className="relative space-y-12">
-        <Logo className="mb-[50px]" />
+        <ThemeToggleBar />
 
-        <h1 className="mb-[30px] h-7 text-2xl font-semibold text-white">
+        <h1 className="mb-[30px] h-7 text-2xl font-semibold">
           Entrar na sua conta
         </h1>
         <p className="text-sm font-normal">
           Se não possui uma conta, você consegue{" "}
           <Link
             href="/signup"
-            className="font-semibold text-green-500 underline decoration-green-500 underline-offset-4 hover:text-green-400"
+            className="font-semibold text-[var(--primary)] underline decoration-[var(--primary)] underline-offset-4"
           >
             criar uma!
           </Link>
@@ -65,11 +65,13 @@ export default function SignIn() {
               id="email"
               type="email"
               {...register("email")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
               placeholder="Email"
             />
             {errors.email && (
-              <p className="text-sm text-red-500">{errors.email.message}</p>
+              <p className="p-1 text-sm text-[var(--danger)]">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
@@ -79,13 +81,13 @@ export default function SignIn() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 {...register("password")}
-                className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+                className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
                 placeholder="Senha"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
               >
                 {showPassword ? (
                   <Eye className="h-4 w-4" />
@@ -95,13 +97,15 @@ export default function SignIn() {
               </button>
             </div>
             {errors.password && (
-              <p className="text-sm text-red-500">{errors.password.message}</p>
+              <p className="p-1 text-sm text-[var(--danger)]">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
           <Button
             type="submit"
-            className="h-[62px] w-full cursor-pointer rounded-[12px] bg-[#55D462] text-white transition-colors duration-200 hover:bg-green-700"
+            className="min-h-[62px] w-full cursor-pointer rounded-[12px] bg-[var(--primary-button)] py-[22px] hover:bg-[var(--primary-button-hover)]"
           >
             Entrar
           </Button>
