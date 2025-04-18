@@ -53,5 +53,7 @@ const Home = () => {
       </Link>
     </main>
   );
-  //};
+  
 };
+
+export default Home;
