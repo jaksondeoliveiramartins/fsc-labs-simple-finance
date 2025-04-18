@@ -7,11 +7,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
-import Logo from "../_components/Logo";
 import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
+import ThemeToggleBar from "../_components/ThemeToggle";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
@@ -51,7 +51,7 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Logo className="mb-[50px]" />
+        <ThemeToggleBar />
 
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold">
           Criar sua conta

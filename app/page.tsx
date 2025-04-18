@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { Button } from "./_lib/components/ui/button";
-import Logo from "./_components/Logo";
 import Link from "next/link";
+import ThemeToggle from "./_components/ThemeToggle";
 
 const Home = () => {
   return (
     <main className="flex w-full flex-col">
-      <Logo className="mb-[50px]" />
+      <ThemeToggle />
       <Image
         src="/images/simple-finance-home.svg"
         width={330}

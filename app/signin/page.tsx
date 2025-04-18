@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "../_components/Logo";
 import { OAuthProviders } from "../_components/OAuthProviders";
 import { Button } from "../_lib/components/ui/button";
 import { Input } from "../_lib/components/ui/input";
@@ -12,6 +11,7 @@ import { loginFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import ThemeToggleBar from "../_components/ThemeToggle";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -42,7 +42,7 @@ export default function SignIn() {
   return (
     <main className="flex h-full flex-col items-center space-y-12">
       <div className="relative space-y-12">
-        <Logo className="mb-[50px]" />
+        <ThemeToggleBar />
 
         <h1 className="mb-[30px] h-7 text-2xl font-semibold">
           Entrar na sua conta
