@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <main className="flex w-full flex-col">
       <div className="flex flex-row">
-        <Logo className="mb-[50px]" />
+        <Logo className="mb-[50px] " />
         <span>
           <ModeTheme />
         </span>
