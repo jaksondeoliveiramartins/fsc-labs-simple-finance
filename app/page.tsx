@@ -1,12 +1,21 @@
+"use client";
+import React from "react";
 import Image from "next/image";
 import { Button } from "./_lib/components/ui/button";
 import Logo from "./_components/Logo";
 import Link from "next/link";
+import { ModeTheme } from "./_components/modeTheme";
 
 const Home = () => {
   return (
     <main className="flex w-full flex-col">
-      <Logo className="mb-[50px]" />
+      <div className="flex flex-row">
+        <Logo className="mb-[50px]" />
+        <span>
+          <ModeTheme />
+        </span>
+      </div>
+
       <Image
         src="/images/simple-finance-home.svg"
         width={330}
@@ -14,7 +23,7 @@ const Home = () => {
         alt="Simple Finance Home"
         className="mb-[50px]"
       />
-      <h2 className="mb-[20px] text-[27px] leading-10 font-semibold">
+      <h2 className="mb-[20px] text-[27px] leading-10 font-semibold text-[#242424]">
         Controle suas finanças pessoais de maneira{" "}
         <span className="text-[#55D462]">fácil e inteligente!</span>
       </h2>
@@ -44,6 +53,5 @@ const Home = () => {
       </Link>
     </main>
   );
+  //};
 };
-
-export default Home;
