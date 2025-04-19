@@ -55,8 +55,8 @@ export default function SignUp() {
     }
   }, [user, router]);
 
-  if (isInitializing) {
-    return <div>Carregando...</div>;
+  if (isInitializing || user) {
+    return null;
   }
 
   return (
