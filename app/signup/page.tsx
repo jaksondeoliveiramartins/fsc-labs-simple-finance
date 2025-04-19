@@ -8,11 +8,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
-import Logo from "../_components/Logo";
 import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
+import ThemeToggleBar from "../_components/ThemeToggle";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
@@ -60,19 +60,19 @@ export default function SignUp() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <main className="flex min-h-screen flex-col">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Logo className="mb-[50px]" />
+        <ThemeToggleBar />
 
-        <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
+        <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold">
           Criar sua conta
         </h1>
         <p className="text-sm font-normal">
           Se já possui uma conta, você consegue fazer{" "}
           <Link
             href="/signin"
-            className="font-semibold text-green-500 underline decoration-green-500 underline-offset-4 hover:text-green-400"
+            className="font-semibold text-[var(--primary)] underline decoration-[var(--primary)] underline-offset-4"
           >
             Login aqui!
           </Link>
@@ -89,11 +89,13 @@ export default function SignUp() {
             id="firstName"
             type="text"
             {...register("firstName")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Primeiro nome"
           />
           {errors.firstName && (
-            <p className="text-sm text-red-500">{errors.firstName.message}</p>
+            <p className="p-1 text-sm text-[var(--danger)]">
+              {errors.firstName.message}
+            </p>
           )}
         </div>
 
@@ -102,11 +104,13 @@ export default function SignUp() {
             id="lastName"
             type="text"
             {...register("lastName")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Sobrenome"
           />
           {errors.lastName && (
-            <p className="text-sm text-red-500">{errors.lastName.message}</p>
+            <p className="p-1 text-sm text-[var(--danger)]">
+              {errors.lastName.message}
+            </p>
           )}
         </div>
 
@@ -115,11 +119,13 @@ export default function SignUp() {
             id="email"
             type="email"
             {...register("email")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Email"
           />
           {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
+            <p className="p-1 text-sm text-[var(--danger)]">
+              {errors.email.message}
+            </p>
           )}
         </div>
 
@@ -129,13 +135,13 @@ export default function SignUp() {
               id="password"
               type={showPassword ? "text" : "password"}
               {...register("password")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
               placeholder="Senha"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
             >
               {showPassword ? (
                 <Eye className="h-4 w-4" />
@@ -145,7 +151,9 @@ export default function SignUp() {
             </button>
           </div>
           {errors.password && (
-            <p className="text-sm text-red-500">{errors.password.message}</p>
+            <p className="p-1 text-sm text-[var(--danger)]">
+              {errors.password.message}
+            </p>
           )}
         </div>
 
@@ -155,13 +163,13 @@ export default function SignUp() {
               id="passwordConfirmation"
               type={showConfirmPassword ? "text" : "password"}
               {...register("passwordConfirmation")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
+              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
               placeholder="Confirme a senha"
             />
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
             >
               {showConfirmPassword ? (
                 <Eye className="h-4 w-4" />
@@ -171,7 +179,7 @@ export default function SignUp() {
             </button>
           </div>
           {errors.passwordConfirmation && (
-            <p className="text-sm text-red-500">
+            <p className="p-1 text-sm text-[var(--danger)]">
               {errors.passwordConfirmation.message}
             </p>
           )}
@@ -179,7 +187,7 @@ export default function SignUp() {
 
         <Button
           type="submit"
-          className="h-[62px] w-full cursor-pointer rounded-[12px] bg-[#55D462] text-white transition-colors duration-200 hover:bg-green-700"
+          className="min-h-[62px] w-full cursor-pointer rounded-[12px] bg-[var(--primary-button)] py-[22px] hover:bg-[var(--primary-button-hover)]"
         >
           Criar Conta
         </Button>
@@ -187,12 +195,10 @@ export default function SignUp() {
 
       <div className="relative mb-[50px] w-full">
         <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t border-gray-500" />
+          <span className="w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-[#141414] px-5 text-gray-400">
-            ou continue com
-          </span>
+          <span className="bg-[var(--background)] px-5">ou continue com</span>
         </div>
       </div>
 
