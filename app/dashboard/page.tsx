@@ -18,7 +18,7 @@ export default function Dashboard() {
       router.push("/signin");
     }
   }, [user, router]);
-
+  if (!user) return null;
   return (
     <div className="flex flex-col items-center">
       <h1>Dashboard</h1>
