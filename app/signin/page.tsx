@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 import { OAuthProviders } from "../_components/OAuthProviders";
 import { Button } from "../_lib/components/ui/button";
-import { Input } from "../_lib/components/ui/input";
 import { useAuthContext } from "../_contexts/auth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +15,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState, useEffect } from "react";
 
 import ThemeToggleBar from "../_components/ThemeToggle";
+import { FloatingLabelInput } from "../_components/FloatingLabelInput";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -51,7 +51,7 @@ export default function SignIn() {
   }
 
   return (
-    <main className="flex h-full flex-col items-center space-y-12">
+    <main className="flex h-full flex-col space-y-12">
       <div className="relative space-y-12">
         <ThemeToggleBar />
 
@@ -72,13 +72,13 @@ export default function SignIn() {
       <div className="flex w-full flex-col justify-between space-y-[50px]">
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <div className="relative">
-            <Input
+            <FloatingLabelInput
               id="email"
               type="email"
-              {...register("email")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-              placeholder="Email"
+              label="Email"
+              {...register("email", { required: true })}
             />
+
             {errors.email && (
               <p className="p-1 text-sm text-[var(--danger)]">
                 {errors.email.message}
@@ -88,22 +88,22 @@ export default function SignIn() {
 
           <div>
             <div className="relative">
-              <Input
+              <FloatingLabelInput
                 id="password"
                 type={showPassword ? "text" : "password"}
-                {...register("password")}
-                className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-                placeholder="Senha"
+                label="Senha"
+                {...register("password", { required: true })}
               />
+
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
               >
                 {showPassword ? (
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-4 w-4 cursor-pointer" />
                 ) : (
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="h-4 w-4 cursor-pointer" />
                 )}
               </button>
             </div>

@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
 import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import ThemeToggleBar from "../_components/ThemeToggle";
+import { FloatingLabelInput } from "../_components/FloatingLabelInput";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
@@ -85,13 +85,13 @@ export default function SignUp() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative">
-          <Input
+          <FloatingLabelInput
             id="firstName"
             type="text"
-            {...register("firstName")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Primeiro nome"
+            label="Nome"
+            {...register("firstName", { required: true })}
           />
+
           {errors.firstName && (
             <p className="p-1 text-sm text-[var(--danger)]">
               {errors.firstName.message}
@@ -100,13 +100,13 @@ export default function SignUp() {
         </div>
 
         <div className="relative">
-          <Input
+          <FloatingLabelInput
             id="lastName"
             type="text"
-            {...register("lastName")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Sobrenome"
+            label="Sobrenome"
+            {...register("lastName", { required: true })}
           />
+
           {errors.lastName && (
             <p className="p-1 text-sm text-[var(--danger)]">
               {errors.lastName.message}
@@ -115,13 +115,13 @@ export default function SignUp() {
         </div>
 
         <div className="relative">
-          <Input
+          <FloatingLabelInput
             id="email"
             type="email"
-            {...register("email")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Email"
+            label="Email"
+            {...register("email", { required: true })}
           />
+
           {errors.email && (
             <p className="p-1 text-sm text-[var(--danger)]">
               {errors.email.message}
@@ -131,22 +131,22 @@ export default function SignUp() {
 
         <div>
           <div className="relative">
-            <Input
+            <FloatingLabelInput
               id="password"
               type={showPassword ? "text" : "password"}
-              {...register("password")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-              placeholder="Senha"
+              label="Senha"
+              {...register("password", { required: true })}
             />
+
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
             >
               {showPassword ? (
-                <Eye className="h-4 w-4" />
+                <Eye className="h-4 w-4 cursor-pointer" />
               ) : (
-                <EyeOff className="h-4 w-4" />
+                <EyeOff className="h-4 w-4 cursor-pointer" />
               )}
             </button>
           </div>
@@ -159,22 +159,22 @@ export default function SignUp() {
 
         <div>
           <div className="relative">
-            <Input
+            <FloatingLabelInput
               id="passwordConfirmation"
               type={showConfirmPassword ? "text" : "password"}
-              {...register("passwordConfirmation")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-              placeholder="Confirme a senha"
+              label="Confirme sua senha"
+              {...register("passwordConfirmation", { required: true })}
             />
+
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
             >
               {showConfirmPassword ? (
-                <Eye className="h-4 w-4" />
+                <Eye className="h-4 w-4 cursor-pointer" />
               ) : (
-                <EyeOff className="h-4 w-4" />
+                <EyeOff className="h-4 w-4 cursor-pointer" />
               )}
             </button>
           </div>
