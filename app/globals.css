@@ -139,3 +139,7 @@ input:-webkit-autofill:active {
   caret-color: var(--input-foreground);
   box-shadow: 0 0 0px 1000px var(--input) inset !important;
 }
+
+.dash-container {
+  @apply flex items-center justify-center w-full h-full;
+}
