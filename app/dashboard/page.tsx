@@ -21,16 +21,13 @@ export default function Dashboard() {
   }, [user, router]);
   if (!user) return null;
   return (
-    <>
-      <div className="flex w-full flex-col items-center">
-        <div className="h-[100px] w-full">
-          <DashboardHeader />
-        </div>
-
-        <h1>Dashboard</h1>
-        <span>Página em construção!</span>
-        <Button onClick={handleSignOut}>Sair</Button>
+    <div className="flex flex-col items-center">
+      <div className="h-[100px]">
+        <DashboardHeader />
       </div>
-    </>
+      <h1>Dashboard</h1>
+      <span>Página em construção!</span>
+      <Button onClick={handleSignOut}>Sair</Button>
+    </div>
   );
 }
