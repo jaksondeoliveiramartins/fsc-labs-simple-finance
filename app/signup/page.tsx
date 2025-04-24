@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -13,6 +12,7 @@ import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import ThemeToggleBar from "../_components/ThemeToggle";
 import { FloatingLabelInput } from "../_components/FloatingLabelInput";
+import { OAuthProviders } from "../_components/OAuthProviders";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
@@ -192,65 +192,7 @@ export default function SignUp() {
           Criar Conta
         </Button>
       </form>
-
-      <div className="relative mb-[50px] w-full">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-[var(--background)] px-5">ou continue com</span>
-        </div>
-      </div>
-
-      <div className="flex justify-center space-x-4 pb-8">
-        {/* Facebook Button */}
-        <Button
-          type="button"
-          variant="outline"
-          className="h-9 w-9 rounded-full border-0 bg-gradient-to-b from-[#18acfe] to-[#0163e0] p-0"
-          asChild
-        >
-          <Link
-            href="/auth/facebook"
-            className="flex items-center justify-center"
-          >
-            <Image
-              src="/images/facebook.svg"
-              alt="Facebook"
-              width={12}
-              height={12}
-            />
-          </Link>
-        </Button>
-
-        {/* Apple Button */}
-        <Button
-          type="button"
-          variant="outline"
-          className="h-9 w-9 rounded-full border-0 bg-[#283544] p-0 hover:bg-[#283544]"
-          asChild
-        >
-          <Link href="/auth/apple" className="flex items-center justify-center">
-            <Image src="/images/apple.svg" alt="Apple" width={16} height={16} />
-          </Link>
-        </Button>
-        {/* Google Button */}
-        <Button
-          type="button"
-          variant="outline"
-          className="rounded-full border-0 bg-[#141414] p-0 hover:bg-[#141414]"
-          asChild
-        >
-          <Link href="/auth/google">
-            <Image
-              src="/images/google.svg"
-              alt="Google"
-              width={32}
-              height={32}
-            />
-          </Link>
-        </Button>
-      </div>
+      <OAuthProviders />
     </main>
   );
 }
