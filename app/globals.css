@@ -1,3 +1,4 @@
+@import "../app/_components/css/MonthYearPicker.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -85,6 +86,7 @@ body {
   --primary-button-hover: oklch(0.7336 0.1915 145.23);
   --secondary-button: oklch(0.3791 0 89.88);
   --secondary-button-hover: oklch(0.3391 0 89.88);
+  --default-button: oklch(0.3791 0 0);
   --danger: oklch(0.63 0.2516 18.53);
 }
 
