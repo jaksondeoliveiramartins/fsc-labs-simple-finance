@@ -1,8 +1,8 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { Months } from "../_types/months";
+import { Month, Months } from "../_types/months";
 import IPeriod from "../_interfaces/IPeriod";
 
 interface MonthYearPickerProps {
@@ -39,32 +39,51 @@ const MonthYearPicker = ({ handleOnClick }: MonthYearPickerProps) => {
       setSelectedYear(nextYear);
     }
   };
-  const getPeriod = (monthIndex: number, year: number) => {
-    const startDate = new Date(year, monthIndex - 1, 1); // Mês começa em 0, por isso o "- 1"
-    const endDate = new Date(year, monthIndex, 0); // O dia 0 do próximo mês é o último dia do mês atual
+
+  const getPeriod = (month: Month, year: number) => {
+    const startDate = new Date(year, month.index - 1, 1); // Mês começa em 0, por isso o "- 1"
+    const endDate = new Date(year, month.index, 0); // O dia 0 do próximo mês é o último dia do mês atual
+    setSelectorValue(month.name + "/" + year);
+    setOpen(false);
     return { startDate, endDate };
   };
+
+  const [isOpen, setOpen] = useState(false);
+  const [selectorValue, setSelectorValue] = useState("Abril/2025");
   return (
     <div className="myp-container">
-      <div className="myp-year">
-        <div className="myp-year-left-selector" onClick={handlePreviousYear}>
-          <ChevronLeft />
-        </div>
-        <div className="myp-year-number">{selectedYear}</div>
-        <div className="myp-year-right-selector" onClick={handleNextYear}>
-          <ChevronRight />
-        </div>
+      <div className="myp-selector">
+        <div className="myp-text-field-seletor">{selectorValue}</div>
+        <button
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+          className="myp-button-selector"
+        >
+          <ChevronDown height={17} />
+        </button>
       </div>
-      <div className="myp-months">
-        {Months.map((month) => (
-          <div
-            key={month.index}
-            className="myp-month"
-            onClick={() => handleOnClick(getPeriod(month.index, selectedYear))}
-          >
-            {month.short}
+      <div className={`myp-month-year-container ${isOpen ? "flex" : "hidden"}`}>
+        <div className="myp-year">
+          <div className="myp-year-left-selector" onClick={handlePreviousYear}>
+            <ChevronLeft height={20} />
           </div>
-        ))}
+          <div className="myp-year-number">{selectedYear}</div>
+          <div className="myp-year-right-selector" onClick={handleNextYear}>
+            <ChevronRight height={20} />
+          </div>
+        </div>
+        <div className="myp-months">
+          {Months.map((month) => (
+            <div
+              key={month.index}
+              className="myp-month"
+              onClick={() => handleOnClick(getPeriod(month, selectedYear))}
+            >
+              {month.short}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

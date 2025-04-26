@@ -1,34 +1,54 @@
 .myp-container {
-    @apply bg-[var(--default-button)] rounded-lg flex flex-col items-center justify-center w-fit px-2;
+  @apply flex w-fit min-w-40 flex-col items-center justify-center;
+}
+
+.myp-selector {
+  @apply mb-1.5 flex h-[30px] w-full gap-0.5;
+}
+
+.myp-text-field-seletor {
+  @apply flex flex-1 items-center justify-center rounded-tl-md rounded-bl-md bg-[var(--default-button)] text-[0.750rem] text-[var(--primary-foreground)];
+}
+
+.myp-button-selector {
+  @apply rounded-tr-md rounded-br-md border-t-[1px] border-b-[1px] border-[var(--default-button)] border-r-[px] bg-[var(--default-button)] text-[var(--primary)];
+}
+
+.myp-button-selector:hover {
+  @apply cursor-pointer bg-[var(--default-button)]/90 select-none;
+}
+
+.myp-month-year-container {
+  @apply w-fit flex-col items-center justify-center rounded-md bg-[var(--default-button)] px-2;
 }
 
 .myp-months,
 .myp-year {
-    @apply text-[var(--primary-foreground)];
+  @apply text-[var(--primary-foreground)];
 }
 
 .myp-year {
-    @apply border-b-[1px] border-[var(--border)]/80 w-full text-center py-1.5 flex items-center justify-around text-[0.875rem];
+  @apply flex w-full items-center justify-around border-b-[1px] border-[var(--border)]/80 py-2 text-center text-[0.750rem] select-none;
 }
 
 .myp-year-left-selector,
 .myp-year-right-selector {
-    @apply cursor-pointer;
+  @apply text-[var(--primary)];
 }
 
 .myp-year-left-selector:hover,
 .myp-year-right-selector:hover {
-    @apply bg-[var(--primary-foreground)]/20 rounded-sm text-[var(--primary)];
+  @apply cursor-pointer rounded-sm bg-[var(--primary-foreground)]/20 text-[var(--primary)] select-none;
 }
 
 .myp-months {
-    @apply grid grid-cols-3 gap-2 p-2;
+  @apply grid grid-cols-3 gap-4 px-2 py-3;
 }
 
 .myp-month {
-    @apply text-center px-1 text-[0.875rem];
+  @apply px-1 py-0.5 text-center text-[0.750rem];
 }
 
 .myp-month:hover {
-    @apply bg-[var(--primary-foreground)]/20 text-[var(--primary)] rounded-sm cursor-pointer;
+  @apply cursor-pointer rounded-sm bg-[var(--primary-foreground)]/20 text-[var(--primary)] select-none;
 }
