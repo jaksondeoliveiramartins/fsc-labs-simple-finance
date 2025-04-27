@@ -1,9 +1,9 @@
 .myp-container {
-  @apply flex w-fit min-w-40 flex-col items-center justify-center;
+  @apply relative flex w-fit min-w-40 flex-col items-center justify-center;
 }
 
 .myp-selector {
-  @apply mb-1.5 flex h-[30px] w-full gap-0.5;
+  @apply mb-1.5 flex h-[30px] w-full gap-[.5px];
 }
 
 .myp-text-field-seletor {
@@ -19,7 +19,7 @@
 }
 
 .myp-month-year-container {
-  @apply w-fit flex-col items-center justify-center rounded-md bg-[var(--default-button)] px-2;
+  @apply absolute top-[32px] z-50 w-full flex-col items-center justify-center rounded-md bg-[var(--default-button)] px-2 shadow-lg;
 }
 
 .myp-months,

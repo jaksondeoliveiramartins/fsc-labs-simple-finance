@@ -41,8 +41,8 @@ const MonthYearPicker = ({ handleOnClick }: MonthYearPickerProps) => {
   };
 
   const getPeriod = (month: Month, year: number) => {
-    const startDate = new Date(year, month.index - 1, 1); // Mês começa em 0, por isso o "- 1"
-    const endDate = new Date(year, month.index, 0); // O dia 0 do próximo mês é o último dia do mês atual
+    const startDate = new Date(year, month.index, 1);
+    const endDate = new Date(year, month.index + 1, 0); // O dia 0 (zero) do próximo mês (month.index + 1) representa o último dia do mês atual (month.index)
     setSelectorValue(month.name + "/" + year);
     setOpen(false);
     return { startDate, endDate };
@@ -63,7 +63,13 @@ const MonthYearPicker = ({ handleOnClick }: MonthYearPickerProps) => {
           <ChevronDown height={17} />
         </button>
       </div>
-      <div className={`myp-month-year-container ${isOpen ? "flex" : "hidden"}`}>
+      <div
+        className={`myp-month-year-container ${isOpen ? "flex" : "hidden"}`}
+        style={{
+          boxShadow:
+            "rgba(255, 255, 255, 0.20) 0px 20px 80px -30px, rgba(255, 255, 255, 0.1) 0px 20px 30px -30px, rgba(255, 255, 255, 0.10) 0px -1px 6px .5px inset",
+        }}
+      >
         <div className="myp-year">
           <div className="myp-year-left-selector" onClick={handlePreviousYear}>
             <ChevronLeft height={20} />
