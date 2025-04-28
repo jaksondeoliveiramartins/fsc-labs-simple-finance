@@ -5,11 +5,11 @@ import { useState } from "react";
 import { Month, Months } from "../_types/months";
 import IPeriod from "../_interfaces/IPeriod";
 
-interface MonthYearPickerProps {
+interface DateRangePickerProps {
   handleOnClick: (period: IPeriod) => void;
 }
 
-const MonthYearPicker = ({ handleOnClick }: MonthYearPickerProps) => {
+const DateRangePicker = ({ handleOnClick }: DateRangePickerProps) => {
   const currentYear = new Date().getFullYear();
   const [selectedYear, setSelectedYear] = useState<number>(currentYear);
 
@@ -95,4 +95,4 @@ const MonthYearPicker = ({ handleOnClick }: MonthYearPickerProps) => {
   );
 };
 
-export default MonthYearPicker;
+export default DateRangePicker;
