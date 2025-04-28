@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import BalanceCard from "../_components/BalanceCard";
-import ThemeToggleBar from "../_components/ThemeToggle";
 import IPeriod from "../_interfaces/IPeriod";
 import TransactionActions from "../_components/TransactionActions";
 import DateRangePicker from "../_components/DateRangePicker";
@@ -18,14 +17,6 @@ export default function ComponentTest() {
 
   return (
     <div className="space-y-4">
-      {/* Theme Toggle */}
-      <div>
-        <div className="text-sm">ThemeToggle</div>
-        <div className="flex w-full flex-col items-center justify-center border-2 p-5">
-          <ThemeToggleBar />
-        </div>
-      </div>
-
       {/* Date Range Picker */}
       <div>
         <div className="text-sm">Date Range Picker</div>
@@ -42,6 +33,14 @@ export default function ComponentTest() {
               )}
             </span>
           )}
+        </div>
+      </div>
+
+      {/* Transaction Actions */}
+      <div>
+        <div className="text-sm">Transaction Actions</div>
+        <div className="flex w-full flex-col items-center justify-center border-2 p-5">
+          <TransactionActions />
         </div>
       </div>
 
@@ -74,14 +73,6 @@ export default function ComponentTest() {
               image="/images/empty-investment.svg"
             ></BalanceCard>
           </div>
-        </div>
-      </div>
-
-      {/* Transaction Actions */}
-      <div>
-        <div className="text-sm">Transaction Actions</div>
-        <div className="flex w-full flex-col items-center justify-center border-2 p-5">
-          <TransactionActions />
         </div>
       </div>
     </div>
