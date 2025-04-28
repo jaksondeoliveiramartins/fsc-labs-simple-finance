@@ -17,7 +17,7 @@ const DashboardHeader = () => {
         <Logo isDark={true} />
         <div onClick={menuIcon} className="relative h-[28px] w-[28px]">
           <div
-            className={`absolute top-0 left-0 transition-all duration-200 ease-in-out ${
+            className={`absolute top-0 left-0 transition-all duration-300 ease-in-out ${
               isMenuOpen
                 ? "scale-100 rotate-0 opacity-100"
                 : "scale-0 rotate-[-90deg] opacity-0"
@@ -27,7 +27,7 @@ const DashboardHeader = () => {
           </div>
 
           <div
-            className={`absolute top-0 left-0 transition-all duration-200 ease-in-out ${
+            className={`absolute top-0 left-0 transition-all duration-300 ease-in-out ${
               isMenuOpen
                 ? "scale-0 rotate-[90deg] opacity-0"
                 : "scale-100 rotate-0 opacity-100"
@@ -39,16 +39,14 @@ const DashboardHeader = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="flex h-[100px] w-[100%] flex-col justify-center overflow-hidden px-3 py-2">
-          <div className="flex flex-col gap-0.5">
-            <div className="flex h-5 w-[100%] items-center justify-end gap-3 rounded-t-lg bg-[#424242] px-4 text-xs text-white">
-              <span className="opacity-85">Alterar tema</span>
-              <Sun size={14} className="text-[var(--primary)]" />
-            </div>
-            <div className="flex h-5 items-center justify-end gap-3 rounded-b-lg bg-[#424242] px-4 text-xs text-white">
-              <span className="opacity-85">Desconectar</span>
-              <LogOut size={14} className="text-[var(--primary)]" />
-            </div>
+        <div className="flex flex-col gap-0.5">
+          <div className="flex h-5 w-[100%] items-center justify-end gap-3 rounded-t-lg bg-[#424242] px-4 text-xs text-white">
+            <span className="opacity-85">Alterar tema</span>
+            <Sun size={14} className="text-[var(--primary)]" />
+          </div>
+          <div className="flex h-5 items-center justify-end gap-3 rounded-b-lg bg-[#424242] px-4 text-xs text-white">
+            <span className="opacity-85">Desconectar</span>
+            <LogOut size={14} className="text-[var(--primary)]" />
           </div>
         </div>
       )}
