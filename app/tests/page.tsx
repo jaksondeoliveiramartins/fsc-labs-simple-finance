@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import BalanceCard from "../_components/BalanceCard";
-import MonthYearPicker from "../_components/MonthYearPicker";
 import ThemeToggleBar from "../_components/ThemeToggle";
 import IPeriod from "../_interfaces/IPeriod";
+import TransactionActions from "../_components/TransactionActions";
+import DateRangePicker from "../_components/DateRangePicker";
 
 export default function ComponentTest() {
   const [period, setPeriod] = useState<IPeriod>({
@@ -25,11 +26,11 @@ export default function ComponentTest() {
         </div>
       </div>
 
-      {/* Month Year Picker */}
+      {/* Date Range Picker */}
       <div>
-        <div className="text-sm">MonthYearPicker</div>
+        <div className="text-sm">Date Range Picker</div>
         <div className="flex w-full flex-col items-center justify-center border-2 p-5">
-          <MonthYearPicker handleOnClick={handleSelectedMonth} />
+          <DateRangePicker handleOnClick={handleSelectedMonth} />
           {period && (
             <span className="text-xs">
               {new Intl.DateTimeFormat("pt-BR").format(
@@ -73,6 +74,14 @@ export default function ComponentTest() {
               image="/images/empty-investment.svg"
             ></BalanceCard>
           </div>
+        </div>
+      </div>
+
+      {/* Transaction Actions */}
+      <div>
+        <div className="text-sm">Transaction Actions</div>
+        <div className="flex w-full flex-col items-center justify-center border-2 p-5">
+          <TransactionActions />
         </div>
       </div>
     </div>
