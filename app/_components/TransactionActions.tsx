@@ -12,7 +12,7 @@ export default function TransactionActions({
   viewRoute = "/transaction",
 }: TransactionActionsProps) {
   return (
-    <div className="ml-[-20px] w-[330px] rounded-[12px] bg-[#242424] px-[30px] py-[35px]">
+    <div className="rounded-[12px] bg-[#242424] px-[30px] py-[35px]">
       <div className="flex items-center justify-between gap-[15px]">
         <h2 className="text-base font-semibold text-white">Transações</h2>
         <div className="flex gap-2">

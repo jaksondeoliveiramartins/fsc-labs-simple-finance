@@ -13,26 +13,26 @@ interface BalanceCardProps {
 const cardThemes = {
   Saldo: {
     gradient:
-      "radial-gradient(ellipse at 75% 100%, rgba(150,150,150,0.25) 0%, transparent 70%)",
-    iconBg: "#4b5563",
+      "radial-gradient(ellipse at 30% 100%, rgba(168,168,168,0.25) 10%, transparent 80%)",
+    iconBg: "rgba(168, 168, 168, 0.2)",
     textColor: "text-gray-300",
   },
   Ganhos: {
     gradient:
-      "radial-gradient(ellipse at 75% 100%, rgba(74,222,128,0.25) 0%, transparent 70%)",
-    iconBg: "#16a34a",
+      "radial-gradient(ellipse at 30% 100%, rgba(85,212,98,0.25) 10%, transparent 80%)",
+    iconBg: "rgba(85, 212, 98, 0.2)",
     textColor: "text-green-400",
   },
   Gastos: {
     gradient:
-      "radial-gradient(ellipse at 75% 100%, rgba(115, 43, 43, 1.0) 0%, transparent 70%)",
-    iconBg: "#dc2626",
+      "radial-gradient(ellipse at 30% 100%, rgba(253, 62, 62, 0.25) 10%, transparent 80%)",
+    iconBg: "rgba(253, 62, 62, 0.2)",
     textColor: "text-red-400",
   },
   Investimentos: {
     gradient:
-      "radial-gradient(ellipse at 75% 100%, rgba(96,165,250,0.25) 0%, transparent 70%)",
-    iconBg: "#2563eb",
+      "radial-gradient(ellipse at 30% 100%, rgba(88,155,255,0.25) 10%, transparent 80%)",
+    iconBg: "rgba(88,155,255, 0.2)",
     textColor: "text-blue-400",
   },
 };
@@ -49,16 +49,13 @@ export default function BalanceCard({
 
   return (
     <div
-      className={`relative flex items-center justify-between overflow-hidden rounded-2xl bg-[#1e1e1e] text-white shadow-lg ${compact ? "p-4" : "p-5"} border border-[#2e2e2e]`}
+      className={`relative flex items-center justify-between overflow-hidden rounded-[12px] shadow-lg ${compact ? "p-4" : "p-5"} border border-[var(--card-border)]`}
     >
       {/* Gradiente em arco */}
       <div
         className="absolute inset-0 z-0 opacity-80"
         style={{ background: theme.gradient }}
       />
-
-      {/* Fundo base escuro */}
-      <div className="absolute inset-0 z-0 bg-[#1e1e1e]" />
 
       <div className="relative z-10">
         <p className={`text-sm font-medium ${theme.textColor}`}>{label}</p>
