@@ -1,54 +1,57 @@
-.myp-container {
+@import "tailwindcss";
+@import "tw-animate-css";
+
+.drp-container {
   @apply relative flex w-fit min-w-40 flex-col items-center justify-center;
 }
 
-.myp-selector {
+.drp-selector {
   @apply mb-1.5 flex h-[30px] w-full gap-[.5px];
 }
 
-.myp-text-field-seletor {
+.drp-selector-text {
   @apply flex flex-1 items-center justify-center rounded-tl-md rounded-bl-md bg-[var(--default-button)] text-[0.750rem] text-[var(--primary-foreground)];
 }
 
-.myp-button-selector {
+.drp-selector-button {
   @apply rounded-tr-md rounded-br-md border-t-[1px] border-b-[1px] border-[var(--default-button)] border-r-[px] bg-[var(--default-button)] text-[var(--primary)];
 }
 
-.myp-button-selector:hover {
+.drp-selector-button:hover {
   @apply cursor-pointer bg-[var(--default-button)]/90 select-none;
 }
 
-.myp-month-year-container {
+.drp-picker-container {
   @apply absolute top-[32px] z-50 w-full flex-col items-center justify-center rounded-md bg-[var(--default-button)] px-2 shadow-lg;
 }
 
-.myp-months,
-.myp-year {
+.drp-months,
+.drp-year {
   @apply text-[var(--primary-foreground)];
 }
 
-.myp-year {
+.drp-year {
   @apply flex w-full items-center justify-around border-b-[1px] border-[var(--border)]/80 py-2 text-center text-[0.750rem] select-none;
 }
 
-.myp-year-left-selector,
-.myp-year-right-selector {
+.drp-previous-year,
+.drp-next-year {
   @apply text-[var(--primary)];
 }
 
-.myp-year-left-selector:hover,
-.myp-year-right-selector:hover {
+.drp-previous-year:hover,
+.drp-next-year:hover {
   @apply cursor-pointer rounded-sm bg-[var(--primary-foreground)]/20 text-[var(--primary)] select-none;
 }
 
-.myp-months {
+.drp-months {
   @apply grid grid-cols-3 gap-4 px-2 py-3;
 }
 
-.myp-month {
+.drp-month {
   @apply px-1 py-0.5 text-center text-[0.750rem];
 }
 
-.myp-month:hover {
+.drp-month:hover {
   @apply cursor-pointer rounded-sm bg-[var(--primary-foreground)]/20 text-[var(--primary)] select-none;
 }

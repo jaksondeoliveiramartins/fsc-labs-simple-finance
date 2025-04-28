@@ -1,5 +1,7 @@
 "use client";
 
+import "./css/DateRangePicker.css";
+
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Month, Months } from "../_types/months";
@@ -51,39 +53,33 @@ const DateRangePicker = ({ handleOnClick }: DateRangePickerProps) => {
   const [isOpen, setOpen] = useState(false);
   const [selectorValue, setSelectorValue] = useState("Abril/2025");
   return (
-    <div className="myp-container">
-      <div className="myp-selector">
-        <div className="myp-text-field-seletor">{selectorValue}</div>
+    <div className="drp-container">
+      <div className="drp-selector">
+        <div className="drp-selector-text">{selectorValue}</div>
         <button
           onClick={() => {
             setOpen(!isOpen);
           }}
-          className="myp-button-selector"
+          className="drp-selector-button"
         >
           <ChevronDown height={17} />
         </button>
       </div>
-      <div
-        className={`myp-month-year-container ${isOpen ? "flex" : "hidden"}`}
-        style={{
-          boxShadow:
-            "rgba(255, 255, 255, 0.20) 0px 20px 80px -30px, rgba(255, 255, 255, 0.1) 0px 20px 30px -30px, rgba(255, 255, 255, 0.10) 0px -1px 6px .5px inset",
-        }}
-      >
-        <div className="myp-year">
-          <div className="myp-year-left-selector" onClick={handlePreviousYear}>
+      <div className={`drp-picker-container ${isOpen ? "flex" : "hidden"}`}>
+        <div className="drp-year">
+          <div className="drp-previous-year" onClick={handlePreviousYear}>
             <ChevronLeft height={20} />
           </div>
-          <div className="myp-year-number">{selectedYear}</div>
-          <div className="myp-year-right-selector" onClick={handleNextYear}>
+          <div className="drp-year-number">{selectedYear}</div>
+          <div className="drp-next-year" onClick={handleNextYear}>
             <ChevronRight height={20} />
           </div>
         </div>
-        <div className="myp-months">
+        <div className="drp-months">
           {Months.map((month) => (
             <div
               key={month.index}
-              className="myp-month"
+              className="drp-month"
               onClick={() => handleOnClick(getPeriod(month, selectedYear))}
             >
               {month.short}
