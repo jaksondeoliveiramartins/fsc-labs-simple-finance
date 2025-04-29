@@ -87,10 +87,11 @@ body {
   --secondary-button-hover: oklch(0.3391 0 89.88);
   --default-button: oklch(0.3791 0 0);
   --danger: oklch(0.63 0.2516 18.53);
+  --card-border: oklch(0.93 0 0);
 }
 
 .dark {
-  --background: oklch(0.1871 0.0106 39.24);
+  --background: oklch(0.19 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
@@ -119,6 +120,7 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.527 0.154 150.069);
+  --card-border: oklch(0.36 0 0);
 }
 
 @layer base {

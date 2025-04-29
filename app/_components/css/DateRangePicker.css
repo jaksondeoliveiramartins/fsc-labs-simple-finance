@@ -6,7 +6,7 @@
 }
 
 .drp-selector {
-  @apply mb-1.5 flex h-[30px] w-full gap-[.5px];
+  @apply mb-1.5 flex h-[30px] w-full gap-0.5;
 }
 
 .drp-selector-text {
