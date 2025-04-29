@@ -31,12 +31,12 @@ const HamburgerMenu = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="absolute top-8 right-0 z-50 flex w-full flex-col gap-0.5 rounded-lg bg-black shadow-lg transition-all duration-300 ease-in-out">
-          <div className="flex h-[26px] cursor-pointer items-center justify-end gap-3 rounded-t-lg bg-[#424242] px-4 text-xs text-white">
+        <div className="absolute top-8 right-0 flex w-full scale-z-95 flex-col gap-0.5 rounded-lg bg-black shadow-lg transition-all duration-300 ease-in-out">
+          <div className="flex h-[26px] cursor-pointer items-center justify-end gap-3 rounded-t-lg bg-[#424242] px-4 text-xs text-white hover:bg-[#535353]">
             <span className="opacity-85">Alterar tema</span>
             <Sun size={14} className="text-[var(--primary)]" />
           </div>
-          <div className="flex h-[26px] cursor-pointer items-center justify-end gap-3 rounded-b-lg bg-[#424242] px-4 text-xs text-white">
+          <div className="flex h-[26px] cursor-pointer items-center justify-end gap-3 rounded-b-lg bg-[#424242] px-4 text-xs text-white hover:bg-[#535353]">
             <span className="opacity-85">Desconectar</span>
             <LogOut size={14} className="text-[var(--primary)]" />
           </div>
