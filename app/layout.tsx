@@ -5,6 +5,7 @@ import ClientProvider from "./_contexts/ClientProvider";
 import React from "react";
 import { Toaster } from "sonner";
 import { AuthContextProvider } from "./_contexts/auth";
+import { ThemeProvider } from "./_contexts/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin-ext"],
@@ -25,13 +26,15 @@ export default function RootLayout({
       <body className={`${inter.className} dark`} cz-shortcut-listen="false">
         <ClientProvider>
           <AuthContextProvider>
-            <Toaster />
-            <div
-              className="max-w-[440px] p-[30px]"
-              style={{ margin: "0 auto" }}
-            >
-              {children}
-            </div>
+            <ThemeProvider>
+              <Toaster />
+              <div
+                className="max-w-[440px] p-[30px]"
+                style={{ margin: "0 auto" }}
+              >
+                {children}
+              </div>
+            </ThemeProvider>
           </AuthContextProvider>
         </ClientProvider>
       </body>
