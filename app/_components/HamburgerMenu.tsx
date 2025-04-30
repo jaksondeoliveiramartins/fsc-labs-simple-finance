@@ -1,4 +1,4 @@
-import { AlignJustify, LogOut, Sun, X } from "lucide-react";
+import { AlignJustify, LogOut, Sun, User2, X } from "lucide-react";
 import { useState } from "react";
 
 const HamburgerMenu = () => {
@@ -31,14 +31,18 @@ const HamburgerMenu = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="absolute top-8 right-0 flex w-full scale-z-95 flex-col gap-0.5 rounded-lg bg-black shadow-lg transition-all duration-300 ease-in-out">
-          <div className="flex h-[26px] cursor-pointer items-center justify-end gap-3 rounded-t-lg bg-[#424242] px-4 text-xs text-white hover:bg-[#535353]">
-            <span className="opacity-85">Alterar tema</span>
-            <Sun size={14} className="text-[var(--primary)]" />
+        <div className="absolute top-8 right-0 flex w-full scale-z-95 flex-col gap-0.5 rounded-lg bg-black/20 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out">
+          <div className="flex h-9 cursor-pointer items-center justify-end gap-3 rounded-t-lg bg-[#424242]/50 px-4 text-sm text-white backdrop-blur-md hover:bg-[#535353]">
+            <span className="opacity-85">Minha conta</span>
+            <User2 size={16} className="text-[var(--primary)]" />
           </div>
-          <div className="flex h-[26px] cursor-pointer items-center justify-end gap-3 rounded-b-lg bg-[#424242] px-4 text-xs text-white hover:bg-[#535353]">
+          <div className="flex h-9 cursor-pointer items-center justify-end gap-3 bg-[#424242]/50 px-4 text-sm text-white backdrop-blur-md hover:bg-[#535353]">
+            <span className="opacity-85">Alterar tema</span>
+            <Sun size={16} className="text-[var(--primary)]" />
+          </div>
+          <div className="flex h-9 cursor-pointer items-center justify-end gap-3 rounded-b-lg bg-[#424242]/50 px-4 text-sm text-white backdrop-blur-md hover:bg-[#535353]">
             <span className="opacity-85">Desconectar</span>
-            <LogOut size={14} className="text-[var(--primary)]" />
+            <LogOut size={16} className="text-[var(--primary)]" />
           </div>
         </div>
       )}
