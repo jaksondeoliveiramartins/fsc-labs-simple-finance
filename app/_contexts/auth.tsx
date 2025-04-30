@@ -21,6 +21,10 @@ interface AuthContextType {
   login: (data: LoginInput) => Promise<void>;
   signup: (data: SignupInput) => Promise<void>;
   signOut: () => void;
+  signInFromCallback: (tokens: {
+    accessToken: string;
+    refreshToken: string;
+  }) => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -29,6 +33,7 @@ export const AuthContext = createContext<AuthContextType>({
   login: async () => {},
   signup: async () => {},
   signOut: () => {},
+  signInFromCallback: async () => {},
 });
 
 export const useAuthContext = () => useContext(AuthContext);
@@ -117,6 +122,20 @@ export const AuthContextProvider = ({
     toast.success("Você foi deslogado com sucesso!");
   };
 
+  const signInFromCallback = async (tokens: {
+    accessToken: string;
+    refreshToken: string;
+  }): Promise<void> => {
+    try {
+      setTokens(tokens);
+      const me = await UserService.me();
+      setUser(me);
+    } catch (error) {
+      console.error("Erro ao recuperar dados do usuário após callback:", error);
+      toast.error("Erro ao autenticar. Tente novamente.");
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -125,6 +144,7 @@ export const AuthContextProvider = ({
         signup,
         isInitializing,
         signOut,
+        signInFromCallback,
       }}
     >
       {children}

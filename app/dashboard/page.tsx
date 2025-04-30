@@ -9,7 +9,7 @@ import DateRangePicker from "../_components/DateRangePicker";
 import BalanceCard from "../_components/BalanceCard";
 import TransactionActions from "../_components/TransactionActions";
 export default function Dashboard() {
-  const { signOut, user } = useAuthContext();
+  const { signOut, user, isInitializing } = useAuthContext();
   const router = useRouter();
 
   const handleSignOut = () => {
@@ -18,11 +18,15 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!isInitializing && !user) {
       router.push("/signin");
     }
-  }, [user, router]);
-  if (!user) return null;
+  }, [isInitializing, user, router]);
+
+  if (isInitializing || !user) {
+    return;
+  }
+
   return (
     <div className="dash-container w-full">
       <DashboardHeader />

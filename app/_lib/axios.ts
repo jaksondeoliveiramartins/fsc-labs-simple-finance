@@ -6,11 +6,11 @@ import {
 } from "../_constants/local-storage";
 
 export const protectedApi = axios.create({
-  baseURL: "https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/api",
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
 });
 
 export const publicApi = axios.create({
-  baseURL: "https://fullstackclub-finance-dashboard-api-vjkp.onrender.com/api",
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
 });
 
 protectedApi.interceptors.request.use((request) => {

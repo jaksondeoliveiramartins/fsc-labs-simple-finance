@@ -48,7 +48,9 @@ export function OAuthProviders() {
           className="rounded-full border-0 bg-[#141414] p-0 hover:bg-[#141414]"
           asChild
         >
-          <Link href="/auth/google">
+          <Link
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/google`}
+          >
             <Image
               src="/images/google.svg"
               alt="Google"
