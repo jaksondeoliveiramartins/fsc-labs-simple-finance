@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "../_contexts/auth";
+import LoadingSpinner from "../_components/LoadingSpinner";
 
 export default function Callback() {
   const router = useRouter();
@@ -32,10 +33,8 @@ export default function Callback() {
           console.error("Erro ao autenticar com backend:", err);
           router.push("/signin");
         });
-    } else {
-      router.push("/");
     }
   }, [router, signInFromCallback]);
 
-  return <p>Autenticando...</p>;
+  return <LoadingSpinner />;
 }

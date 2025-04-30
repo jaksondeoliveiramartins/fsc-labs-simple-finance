@@ -13,6 +13,7 @@ import { z } from "zod";
 import ThemeToggleBar from "../_components/ThemeToggle";
 import { FloatingLabelInput } from "../_components/FloatingLabelInput";
 import { OAuthProviders } from "../_components/OAuthProviders";
+import LoadingSpinner from "../_components/LoadingSpinner";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
@@ -56,7 +57,7 @@ export default function SignUp() {
   }, [user, router]);
 
   if (isInitializing || user) {
-    return null;
+    return <LoadingSpinner text="Carregando..." />;
   }
 
   return (

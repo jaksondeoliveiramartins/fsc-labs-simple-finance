@@ -8,6 +8,7 @@ import DashboardHeader from "../_components/DashboardHeader";
 import DateRangePicker from "../_components/DateRangePicker";
 import BalanceCard from "../_components/BalanceCard";
 import TransactionActions from "../_components/TransactionActions";
+import LoadingSpinner from "../_components/LoadingSpinner";
 export default function Dashboard() {
   const { signOut, user, isInitializing } = useAuthContext();
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Dashboard() {
   }, [isInitializing, user, router]);
 
   if (isInitializing || !user) {
-    return;
+    return <LoadingSpinner text="Carregando" />;
   }
 
   return (
