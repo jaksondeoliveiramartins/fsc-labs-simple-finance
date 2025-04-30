@@ -1,8 +1,17 @@
 import { AlignJustify, LogOut, Sun, User2, X } from "lucide-react";
 import { useState } from "react";
+import { useAuthContext } from "../_contexts/auth";
+import { useRouter } from "next/navigation";
 
 const HamburgerMenu = () => {
+  const router = useRouter();
+  const { signOut } = useAuthContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleSignOut = () => {
+    signOut();
+    router.push("/signin");
+  };
 
   const menuIcon = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -40,7 +49,10 @@ const HamburgerMenu = () => {
             <span className="opacity-85">Alterar tema</span>
             <Sun size={16} className="text-[var(--primary)]" />
           </div>
-          <div className="flex h-9 cursor-pointer items-center justify-end gap-3 rounded-b-lg bg-[#424242]/50 px-4 text-sm text-white backdrop-blur-md hover:bg-[#535353]">
+          <div
+            className="flex h-9 cursor-pointer items-center justify-end gap-3 rounded-b-lg bg-[#424242]/50 px-4 text-sm text-white backdrop-blur-md hover:bg-[#535353]"
+            onClick={handleSignOut}
+          >
             <span className="opacity-85">Desconectar</span>
             <LogOut size={16} className="text-[var(--primary)]" />
           </div>
