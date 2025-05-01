@@ -19,7 +19,7 @@ export function OAuthProviders() {
           asChild
         >
           <Link
-            href="/auth/facebook"
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/facebook`}
             className="flex items-center justify-center"
           >
             <Image
@@ -37,7 +37,10 @@ export function OAuthProviders() {
           className="h-9 w-9 rounded-full border-0 bg-[#283544] p-0 hover:bg-[#283544]"
           asChild
         >
-          <Link href="/auth/apple" className="flex items-center justify-center">
+          <Link
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/apple`}
+            className="flex items-center justify-center"
+          >
             <Image src="/images/apple.svg" alt="Apple" width={16} height={16} />
           </Link>
         </Button>

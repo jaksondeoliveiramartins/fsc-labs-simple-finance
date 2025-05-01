@@ -9,6 +9,7 @@ import ThemeToggle from "./_components/ThemeToggle";
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "./_contexts/auth";
 import { useEffect } from "react";
+import LoadingSpinner from "./_components/LoadingSpinner";
 
 const Home = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const Home = () => {
   }, [user, router]);
 
   if (isInitializing || user) {
-    return null;
+    return <LoadingSpinner text="Carregando..." />;
   }
 
   return (

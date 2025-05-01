@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 
 import ThemeToggleBar from "../_components/ThemeToggle";
 import { FloatingLabelInput } from "../_components/FloatingLabelInput";
+import LoadingSpinner from "../_components/LoadingSpinner";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -47,7 +48,7 @@ export default function SignIn() {
   }, [user, router]);
 
   if (isInitializing || user) {
-    return null;
+    return <LoadingSpinner text="Carregando..." />;
   }
 
   return (
