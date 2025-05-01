@@ -15,7 +15,7 @@ export function OAuthProviders() {
         <Button
           type="button"
           variant="outline"
-          className="w-32 rounded-xl border-0 bg-gradient-to-b from-[#95daff] to-[#175bb3] p-0"
+          className="w-32 rounded-xl border-0 bg-gradient-to-b from-[#e7e7e7] to-[#e0e0e0]"
           asChild
         >
           <Link
@@ -34,7 +34,7 @@ export function OAuthProviders() {
         <Button
           type="button"
           variant="outline"
-          className="w-32 rounded-xl border-0 bg-gradient-to-b from-[#e7e7e7] to-[#e0e0e0] p-0"
+          className="w-32 rounded-xl border-0 bg-gradient-to-b from-[#e7e7e7] to-[#e0e0e0]"
           asChild
         >
           <Link
