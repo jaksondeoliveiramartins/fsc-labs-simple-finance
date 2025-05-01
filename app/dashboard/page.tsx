@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { useAuthContext } from "../_contexts/auth";
-import { Button } from "../_lib/components/ui/button";
 import { useRouter } from "next/navigation";
 import DashboardHeader from "../_components/DashboardHeader";
 import DateRangePicker from "../_components/DateRangePicker";
@@ -10,13 +9,8 @@ import BalanceCard from "../_components/BalanceCard";
 import TransactionActions from "../_components/TransactionActions";
 import LoadingSpinner from "../_components/LoadingSpinner";
 export default function Dashboard() {
-  const { signOut, user, isInitializing } = useAuthContext();
+  const { user, isInitializing } = useAuthContext();
   const router = useRouter();
-
-  const handleSignOut = () => {
-    signOut();
-    router.push("/signin");
-  };
 
   useEffect(() => {
     if (!isInitializing && !user) {
@@ -65,10 +59,6 @@ export default function Dashboard() {
         <div className="my-[30px] w-full">
           <TransactionActions />
         </div>
-
-        <Button onClick={handleSignOut} className="mt-4">
-          Sair
-        </Button>
       </div>
     </div>
   );
