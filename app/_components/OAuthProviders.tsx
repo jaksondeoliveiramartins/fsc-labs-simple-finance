@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function OAuthProviders() {
   return (
-    <div className="flex w-full flex-col gap-10">
+    <div className="flex w-full flex-col gap-12">
       <div className="flex w-full items-center text-xs uppercase">
         <div className="flex-grow border-t" />
         <span className="px-4">ou continue com</span>
@@ -15,40 +15,26 @@ export function OAuthProviders() {
         <Button
           type="button"
           variant="outline"
-          className="h-9 w-9 rounded-full border-0 bg-gradient-to-b from-[#18acfe] to-[#0163e0] p-0"
+          className="w-32 rounded-xl border-0 bg-gradient-to-b from-[#95daff] to-[#175bb3] p-0"
           asChild
         >
           <Link
             href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/facebook`}
-            className="flex items-center justify-center"
           >
             <Image
               src="/images/facebook.svg"
               alt="Facebook"
-              width={12}
-              height={12}
+              width={26}
+              height={26}
             />
+            <span className="text-[#F3F3F3]">Facebook</span>
           </Link>
         </Button>
 
         <Button
           type="button"
           variant="outline"
-          className="h-9 w-9 rounded-full border-0 bg-[#283544] p-0 hover:bg-[#283544]"
-          asChild
-        >
-          <Link
-            href={`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login/apple`}
-            className="flex items-center justify-center"
-          >
-            <Image src="/images/apple.svg" alt="Apple" width={16} height={16} />
-          </Link>
-        </Button>
-
-        <Button
-          type="button"
-          variant="outline"
-          className="rounded-full border-0 bg-[#141414] p-0 hover:bg-[#141414]"
+          className="w-32 rounded-xl border-0 bg-gradient-to-b from-[#e7e7e7] to-[#e0e0e0] p-0"
           asChild
         >
           <Link
@@ -57,9 +43,10 @@ export function OAuthProviders() {
             <Image
               src="/images/google.svg"
               alt="Google"
-              width={32}
-              height={32}
+              width={26}
+              height={26}
             />
+            <span className="text-[#3C3C3C]">Google</span>
           </Link>
         </Button>
       </div>
