@@ -27,7 +27,7 @@ export function OAuthProviders() {
               width={26}
               height={26}
             />
-            <span className="text-[#F3F3F3]">Facebook</span>
+            <span className="text-[#3C3C3C]">Facebook</span>
           </Link>
         </Button>
 
