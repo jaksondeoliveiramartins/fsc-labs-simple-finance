@@ -88,6 +88,10 @@ body {
   --default-button: oklch(0.3791 0 0);
   --danger: oklch(0.63 0.2516 18.53);
   --card-border: oklch(0.93 0 0);
+  --label-foreground: oklch(57.02% 0.004 257.47);
+  --earning-color: oklch(0.7736 0.1915 145.23);
+  --expense-color: oklch(63.63% 0.233 29.55);
+  --investment-color: oklch(72.35% 0.186 248.18);
 }
 
 .dark {
@@ -121,6 +125,7 @@ body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.527 0.154 150.069);
   --card-border: oklch(0.36 0 0);
+  --label-foreground: oklch(79.18% 0.005 257.47);
 }
 
 @layer base {
@@ -144,5 +149,5 @@ input:-webkit-autofill:active {
 }
 
 .dash-container {
-  @apply flex items-center justify-center w-full h-full;
+  @apply flex h-full w-full items-center justify-center;
 }
