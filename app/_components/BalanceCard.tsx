@@ -15,7 +15,7 @@ const cardThemes = {
     gradient:
       "radial-gradient(ellipse at 30% 100%, rgba(168,168,168,0.25) 10%, transparent 80%)",
     iconBg: "rgba(168, 168, 168, 0.2)",
-    textColor: "text-gray-300",
+    textColor: "var(--label-foreground)",
   },
   Ganhos: {
     gradient:
@@ -49,7 +49,7 @@ export default function BalanceCard({
 
   return (
     <div
-      className={`relative flex items-center justify-between overflow-hidden rounded-[12px] shadow-lg ${compact ? "p-4" : "p-5"} border border-[var(--card-border)]`}
+      className={`relative flex items-center justify-between overflow-hidden rounded-[12px] shadow-lg ${compact ? "p-4" : "p-5"} border border-[var(--card-border)] bg-[var(--card)]`}
     >
       {/* Gradiente em arco */}
       <div
@@ -59,7 +59,9 @@ export default function BalanceCard({
 
       <div className="relative z-10">
         <p className={`text-sm font-medium ${theme.textColor}`}>{label}</p>
-        <p className={`font-bold ${compact ? "text-xl" : "text-2xl"} mt-1`}>
+        <p
+          className={`font-bold ${compact ? "text-xl" : "text-2xl"} mt-1 text-[var(--card-foreground)]`}
+        >
           R${" "}
           {showValue && amount !== undefined
             ? amount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })
