@@ -8,6 +8,8 @@ import DateRangePicker from "../_components/DateRangePicker";
 import BalanceCard from "../_components/BalanceCard";
 import TransactionActions from "../_components/TransactionActions";
 import LoadingSpinner from "../_components/LoadingSpinner";
+import TransactionBreakdown from "../_components/TransactionBreakdown";
+import TransactionCard from "../_components/TransactionCard";
 export default function Dashboard() {
   const [isShowAmount, setShowAmount] = useState(false);
   const { user, isInitializing } = useAuthContext();
@@ -35,7 +37,7 @@ export default function Dashboard() {
       />
       <div className="mt-[68px] flex w-full flex-col items-center">
         <div className="flex w-full items-center justify-between py-8">
-          <div>
+          <div className="text-[var(--card-foreground)]">
             Olá <span className="font-semibold">{user?.firstName}</span>!
           </div>
           <DateRangePicker handleOnClick={() => {}} />
@@ -71,6 +73,10 @@ export default function Dashboard() {
         <div className="my-[30px] w-full">
           <TransactionActions />
         </div>
+
+        <TransactionCard>
+          <TransactionBreakdown isShowAmount={isShowAmount} />
+        </TransactionCard>
       </div>
     </div>
   );

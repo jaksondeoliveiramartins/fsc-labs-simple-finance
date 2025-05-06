@@ -1,7 +1,6 @@
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
 import Logo from "./Logo";
-
 interface DashboardHeaderProps {
   isShowAmmount: boolean;
   handleShowAmountAction: (showAmount: boolean) => void;
@@ -17,13 +16,13 @@ const DashboardHeader = ({
         <Logo isDark={true} />
         <div>
           <div
-            className="mr-11 cursor-pointer"
+            className="relative mr-10 cursor-pointer"
             onClick={() => handleShowAmountAction(!isShowAmmount)}
           >
             {isShowAmmount ? (
-              <EyeIcon stroke={`var(--primary)`} size={22} />
-            ) : (
               <EyeClosedIcon stroke={`var(--primary)`} size={22} />
+            ) : (
+              <EyeIcon stroke={`var(--primary)`} size={22} />
             )}
           </div>
           <HamburgerMenu />
