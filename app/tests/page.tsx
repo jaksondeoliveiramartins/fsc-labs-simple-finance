@@ -5,6 +5,8 @@ import BalanceCard from "../_components/BalanceCard";
 import IPeriod from "../_interfaces/IPeriod";
 import TransactionActions from "../_components/TransactionActions";
 import DateRangePicker from "../_components/DateRangePicker";
+import PercentTransaction from "../_components/PercentTransaction";
+import { TransactionType } from "../_types/transactionType";
 
 export default function ComponentTest() {
   const [period, setPeriod] = useState<IPeriod>({
@@ -41,6 +43,25 @@ export default function ComponentTest() {
         <div className="text-sm">Transaction Actions</div>
         <div className="flex w-full flex-col items-center justify-center border-2 p-5">
           <TransactionActions />
+        </div>
+      </div>
+
+      {/* Percent Transaction */}
+      <div>
+        <div className="text-sm">Transaction Actions</div>
+        <div className="flex w-full flex-col items-center justify-center gap-2 border-2 p-5">
+          <PercentTransaction
+            transactionType={TransactionType.EARNING}
+            percentNumber={50}
+          />
+          <PercentTransaction
+            transactionType={TransactionType.EXPENSE}
+            percentNumber={20}
+          />
+          <PercentTransaction
+            transactionType={TransactionType.INVESTMENT}
+            percentNumber={30}
+          />
         </div>
       </div>
 
