@@ -7,13 +7,13 @@ import {
 interface PercentTransactionProps {
   transactionType: TransactionType;
   percentNumber: number;
-  showAmount: boolean;
+  showAmount?: boolean;
 }
 
 const PercentTransaction = ({
   transactionType,
   percentNumber,
-  showAmount,
+  showAmount = false,
 }: PercentTransactionProps) => {
   const { color, label } = TransactionTypeConfig[transactionType];
   return (
