@@ -7,6 +7,7 @@ import TransactionActions from "../_components/TransactionActions";
 import DateRangePicker from "../_components/DateRangePicker";
 import PercentTransaction from "../_components/PercentTransaction";
 import { TransactionType } from "../_types/transactionType";
+import TransactionTypeSelector from "../_components/TransactionTypeSelector";
 
 export default function ComponentTest() {
   const [period, setPeriod] = useState<IPeriod>({
@@ -19,6 +20,14 @@ export default function ComponentTest() {
 
   return (
     <div className="space-y-4">
+      {/* Transaction Type Selector */}
+      <div>
+        <div className="text-sm">TransactionType Selector</div>
+        <div className="flex w-full flex-col items-center justify-center border-2 p-5">
+          <TransactionTypeSelector />
+        </div>
+      </div>
+
       {/* Date Range Picker */}
       <div>
         <div className="text-sm">Date Range Picker</div>
