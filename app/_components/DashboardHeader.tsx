@@ -1,12 +1,32 @@
+import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
 import Logo from "./Logo";
+interface DashboardHeaderProps {
+  isShowAmmount: boolean;
+  handleShowAmountAction: (showAmount: boolean) => void;
+}
 
-const DashboardHeader = () => {
+const DashboardHeader = ({
+  isShowAmmount,
+  handleShowAmountAction,
+}: DashboardHeaderProps) => {
   return (
     <header className="fixed top-0 z-50 flex h-[100px] w-[440px] items-center justify-between bg-black px-[30px]">
       <nav className="relative flex w-full items-center justify-between">
         <Logo isDark={true} />
-        <HamburgerMenu />
+        <div>
+          <div
+            className="relative mr-10 cursor-pointer"
+            onClick={() => handleShowAmountAction(!isShowAmmount)}
+          >
+            {isShowAmmount ? (
+              <EyeClosedIcon stroke={`var(--primary)`} size={22} />
+            ) : (
+              <EyeIcon stroke={`var(--primary)`} size={22} />
+            )}
+          </div>
+          <HamburgerMenu />
+        </div>
       </nav>
     </header>
   );
