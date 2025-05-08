@@ -7,6 +7,7 @@ import TransactionActions from "../_components/TransactionActions";
 import DateRangePicker from "../_components/DateRangePicker";
 import PercentTransaction from "../_components/PercentTransaction";
 import { TransactionType } from "../_types/transactionType";
+import TransactionItem from "../_components/TransactionItem";
 
 export default function ComponentTest() {
   const [period, setPeriod] = useState<IPeriod>({
@@ -45,6 +46,12 @@ export default function ComponentTest() {
           <TransactionActions />
         </div>
       </div>
+      <TransactionItem
+        transactionName="Faculdade"
+        transactionValue="10"
+        transactionDate="02/03/2025"
+        transactionType={TransactionType.EARNING}
+      />
 
       {/* Percent Transaction */}
       <div>

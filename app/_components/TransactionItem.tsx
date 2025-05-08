@@ -1,14 +1,15 @@
-import TransactionColor from "./TransactionColor";
+import { TransactionType } from "../_types/transactionType";
+import TransactionBadge from "./TransactionBadge";
 
 interface TransactionItemProps {
-  transactionColor: string;
+  transactionType: TransactionType;
   transactionName: string;
   transactionValue: string;
   transactionDate: string;
 }
 
 const TransactionItem = ({
-  transactionColor,
+  transactionType,
   transactionName,
   transactionValue,
   transactionDate,
@@ -16,7 +17,7 @@ const TransactionItem = ({
   return (
     <div className="mt-10 flex justify-between">
       <div className="flex items-center gap-3">
-        <TransactionColor transactionColor={transactionColor} />
+        <TransactionBadge transactionType={transactionType} />
         <div className="text-sm">{transactionName}</div>
       </div>
       <div className="flex flex-col items-end">

@@ -1,8 +1,6 @@
 import { Plus } from "lucide-react";
 import Image from "next/image";
 import externalLinkIcon from "@/public/images/external-link.svg";
-import TransactionItem from "./TransactionItem";
-
 interface TransactionActionsProps {
   addRoute?: string;
   viewRoute?: string;
@@ -37,12 +35,6 @@ export default function TransactionActions({
           </a>
         </div>
       </div>
-      <TransactionItem
-        transactionColor="earning"
-        transactionDate="05/05/2025"
-        transactionName="Trabalho"
-        transactionValue="1000"
-      />
     </div>
   );
 }
