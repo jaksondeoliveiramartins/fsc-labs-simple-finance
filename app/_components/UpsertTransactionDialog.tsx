@@ -4,7 +4,7 @@ import {
   DialogTitle,
 } from "../_lib/components/ui/dialog";
 
-export default function AddDialog() {
+export default function UpsertTransactionDialog() {
   return (
     <DialogContent className="w-96 border-none bg-[#242424] shadow-none">
       <DialogHeader>
