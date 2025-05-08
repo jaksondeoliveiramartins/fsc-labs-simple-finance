@@ -6,7 +6,12 @@ import {
 
 export default function UpsertTransactionDialog() {
   return (
-    <DialogContent className="w-96 border-none bg-[#242424] shadow-none">
+    <DialogContent
+      onInteractOutside={(event) => {
+        event.preventDefault();
+      }}
+      className="w-96 border-none bg-[#242424] shadow-none"
+    >
       <DialogHeader>
         <DialogTitle className="text-center text-white">
           Adicionar Transação
