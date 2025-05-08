@@ -1,3 +1,4 @@
+import { SquarePenIcon } from "lucide-react";
 import { TransactionType } from "../_types/transactionType";
 import TransactionBadge from "./TransactionBadge";
 
@@ -15,19 +16,26 @@ const TransactionItem = ({
   transactionDate,
 }: TransactionItemProps) => {
   return (
-    <div className="mt-10 flex justify-between">
+    <div className="flex w-full justify-between gap-4">
       <div className="flex items-center gap-3">
         <TransactionBadge transactionType={transactionType} />
-        <div className="text-sm">{transactionName}</div>
-      </div>
-      <div className="flex flex-col items-end">
-        <div className="text-sm font-bold">
-          {new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          }).format(Number(transactionValue))}
+        <div className="text-sm text-[var(--card-foreground)]">
+          {transactionName}
         </div>
-        <div className="text-xs text-[#7A7A7A]">{transactionDate}</div>
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="flex flex-col items-end">
+          <div className="text-sm font-bold text-[var(--card-foreground)]">
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(Number(transactionValue))}
+          </div>
+          <div className="text-xs text-[var(--card-foreground)]">
+            {transactionDate}
+          </div>
+        </div>
+        <SquarePenIcon className="h-5 w-5 cursor-pointer" />
       </div>
     </div>
   );

@@ -5,10 +5,10 @@ import BalanceCard from "../_components/BalanceCard";
 import IPeriod from "../_interfaces/IPeriod";
 import TransactionActions from "../_components/TransactionActions";
 import DateRangePicker from "../_components/DateRangePicker";
-import PercentTransaction from "../_components/PercentTransaction";
 import { TransactionType } from "../_types/transactionType";
-import TransactionItem from "../_components/TransactionItem";
 import TransactionTypeSelector from "../_components/TransactionTypeSelector";
+import TransactionItemsCard from "../_components/TransactionItemsCard";
+import TransactionPercent from "../_components/TransactionPercent";
 
 export default function ComponentTest() {
   const [period, setPeriod] = useState<IPeriod>({
@@ -55,26 +55,73 @@ export default function ComponentTest() {
           <TransactionActions />
         </div>
       </div>
-      <TransactionItem
-        transactionName="Faculdade"
-        transactionValue="10"
-        transactionDate="02/03/2025"
-        transactionType={TransactionType.EARNING}
-      />
+
+      {/* Transaction Items */}
+      <div>
+        <div className="text-sm">Transaction Items</div>
+        <div className="flex w-full flex-col items-center justify-center border-2 p-5">
+          <TransactionItemsCard
+            transactions={[
+              {
+                transactionType: TransactionType.EARNING,
+                transactionName: "Salário",
+                transactionValue: "5000",
+                transactionDate: "01/01/2023",
+              },
+              {
+                transactionType: TransactionType.EXPENSE,
+                transactionName: "Faculadade de medicina",
+                transactionValue: "2000",
+                transactionDate: "01/01/2023",
+              },
+              {
+                transactionType: TransactionType.INVESTMENT,
+                transactionName: "Renda fixa",
+                transactionValue: "2000",
+                transactionDate: "01/01/2023",
+              },
+              {
+                transactionType: TransactionType.EXPENSE,
+                transactionName: "Faculadade de medicina",
+                transactionValue: "2000",
+                transactionDate: "01/01/2023",
+              },
+              {
+                transactionType: TransactionType.INVESTMENT,
+                transactionName: "Renda fixa",
+                transactionValue: "2000",
+                transactionDate: "01/01/2023",
+              },
+              {
+                transactionType: TransactionType.EXPENSE,
+                transactionName: "Faculadade de medicina",
+                transactionValue: "2000",
+                transactionDate: "01/01/2023",
+              },
+              {
+                transactionType: TransactionType.INVESTMENT,
+                transactionName: "Renda fixa",
+                transactionValue: "2000",
+                transactionDate: "01/01/2023",
+              },
+            ]}
+          />
+        </div>
+      </div>
 
       {/* Percent Transaction */}
       <div>
-        <div className="text-sm">Transaction Actions</div>
+        <div className="text-sm">Percent Transaction</div>
         <div className="flex w-full flex-col items-center justify-center gap-2 border-2 p-5">
-          <PercentTransaction
+          <TransactionPercent
             transactionType={TransactionType.EARNING}
             percentNumber={50}
           />
-          <PercentTransaction
+          <TransactionPercent
             transactionType={TransactionType.EXPENSE}
             percentNumber={20}
           />
-          <PercentTransaction
+          <TransactionPercent
             transactionType={TransactionType.INVESTMENT}
             percentNumber={30}
           />

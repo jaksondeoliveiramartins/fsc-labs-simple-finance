@@ -139,6 +139,8 @@ body::-webkit-scrollbar {
   --expense-color: oklch(63.63% 0.233 29.55);
   /* #34abff */
   --investment-color: oklch(72.35% 0.186 248.18);
+  /* #c1c1c1 */
+  --hr-border-color: oklch(0.81 0 0);
 }
 
 .dark {
@@ -204,6 +206,8 @@ body::-webkit-scrollbar {
   --card-border: oklch(0.36 0 0);
   /* #c1c1c1 */
   --label-foreground: oklch(0.81 0 0);
+  /* #424242 */
+  --hr-border-color: oklch(0.3791 0 89.88);
 }
 
 @layer base {
@@ -228,4 +232,10 @@ input:-webkit-autofill:active {
 
 .dash-container {
   @apply flex h-full w-full items-center justify-center;
+}
+
+.no-scrollbar {
+  @apply hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
