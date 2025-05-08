@@ -10,7 +10,9 @@ interface TransactionBadgeProps {
 
 const TransactionBadge = ({ transactionType }: TransactionBadgeProps) => {
   const { color } = TransactionTypeConfig[transactionType as TransactionType];
-  return <Circle size={12} fill={color} stroke={color} />;
+  return (
+    <Circle fill={color} stroke={color} className="h-3 min-h-3 w-3 min-w-3" />
+  );
 };
 
 export default TransactionBadge;

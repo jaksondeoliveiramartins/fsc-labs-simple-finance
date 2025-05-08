@@ -1,25 +1,25 @@
-import { CircleIcon } from "lucide-react";
 import {
   TransactionTypeConfig,
   TransactionType,
 } from "../_types/transactionType";
+import TransactionBadge from "./TransactionBadge";
 
-interface PercentTransactionProps {
+interface TransactionPercentProps {
   transactionType: TransactionType;
   percentNumber: number;
   showAmount?: boolean;
 }
 
-const PercentTransaction = ({
+const TransactionPercent = ({
   transactionType,
   percentNumber,
   showAmount = false,
-}: PercentTransactionProps) => {
-  const { color, label } = TransactionTypeConfig[transactionType];
+}: TransactionPercentProps) => {
+  const { label } = TransactionTypeConfig[transactionType];
   return (
     <div className="flex w-10/16 items-center justify-between">
       <div className="flex items-center gap-2">
-        <CircleIcon size={17} color={`${color}`} fill={`${color}`} />
+        <TransactionBadge transactionType={transactionType} />
         <p className="text-sm font-normal text-[var(--label-foreground)]">
           {label}
         </p>
@@ -31,4 +31,4 @@ const PercentTransaction = ({
   );
 };
 
-export default PercentTransaction;
+export default TransactionPercent;
