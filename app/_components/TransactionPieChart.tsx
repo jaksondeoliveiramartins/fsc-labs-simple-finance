@@ -7,10 +7,12 @@ import {
 
 export interface TransactionPieChartProps {
   data: { transactionType: TransactionType; amount: number }[];
+  showAmount: boolean;
 }
 
 export default function TransactionPieChart({
   data,
+  showAmount,
 }: TransactionPieChartProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(() => {
     const idx = data.findIndex((item) => item.amount > 0);
@@ -59,10 +61,12 @@ export default function TransactionPieChart({
             {TransactionTypeConfig[activeData.transactionType].label}
           </div>
           <div className="text-[16px] font-bold">
-            {new Intl.NumberFormat("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            }).format(Number(activeData.amount))}
+            {showAmount
+              ? new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(Number(activeData.amount))
+              : "R$ ******"}
           </div>
         </div>
       )}
