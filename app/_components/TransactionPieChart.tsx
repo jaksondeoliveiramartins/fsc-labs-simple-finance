@@ -7,10 +7,12 @@ import {
 
 export interface TransactionPieChartProps {
   data: { transactionType: TransactionType; amount: number }[];
+  showAmount: boolean;
 }
 
 export default function TransactionPieChart({
   data,
+  showAmount,
 }: TransactionPieChartProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(() => {
     const idx = data.findIndex((item) => item.amount > 0);
@@ -23,9 +25,9 @@ export default function TransactionPieChart({
       : null;
 
   return (
-    <div className="relative h-[400px] w-full">
+    <div className="relative mb-5 h-[280px] w-full">
       {data.filter((item) => item.amount > 0).length === 0 ? (
-        <div className="flex h-full w-full items-center justify-center text-stone-700">
+        <div className="flex h-full w-full items-center justify-center text-center">
           Não existem transações cadastradas para o período selecionado!
         </div>
       ) : (
@@ -59,10 +61,12 @@ export default function TransactionPieChart({
             {TransactionTypeConfig[activeData.transactionType].label}
           </div>
           <div className="text-[16px] font-bold">
-            {new Intl.NumberFormat("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            }).format(Number(activeData.amount))}
+            {showAmount
+              ? new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(Number(activeData.amount))
+              : "R$ ******"}
           </div>
         </div>
       )}

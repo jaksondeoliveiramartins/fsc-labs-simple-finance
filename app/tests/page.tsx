@@ -26,17 +26,18 @@ export default function ComponentTest() {
     data: [
       {
         transactionType: TransactionType.EARNING,
-        amount: 51,
+        amount: 0,
       },
       {
         transactionType: TransactionType.EXPENSE,
-        amount: 5,
+        amount: 0,
       },
       {
         transactionType: TransactionType.INVESTMENT,
-        amount: 10,
+        amount: 0,
       },
     ],
+    showAmount: true,
   };
 
   return (
@@ -133,7 +134,10 @@ export default function ComponentTest() {
       <div>
         <div className="text-sm">Percent Transaction</div>
         <div className="flex w-full flex-col items-center justify-center gap-2 border-2 p-5">
-          <TransactionPieChart data={transactionPieChart.data} />
+          <TransactionPieChart
+            data={transactionPieChart.data}
+            showAmount={transactionPieChart.showAmount}
+          />
           <TransactionPercent
             transactionType={TransactionType.EARNING}
             percentNumber={50}
