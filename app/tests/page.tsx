@@ -26,15 +26,15 @@ export default function ComponentTest() {
     data: [
       {
         transactionType: TransactionType.EARNING,
-        amount: 51,
+        amount: 0,
       },
       {
         transactionType: TransactionType.EXPENSE,
-        amount: 5,
+        amount: 0,
       },
       {
         transactionType: TransactionType.INVESTMENT,
-        amount: 10,
+        amount: 0,
       },
     ],
     showAmount: true,

@@ -25,9 +25,9 @@ export default function TransactionPieChart({
       : null;
 
   return (
-    <div className="relative h-[400px] w-full">
+    <div className="relative mb-5 h-[280px] w-full">
       {data.filter((item) => item.amount > 0).length === 0 ? (
-        <div className="flex h-full w-full items-center justify-center text-stone-700">
+        <div className="flex h-full w-full items-center justify-center text-center">
           Não existem transações cadastradas para o período selecionado!
         </div>
       ) : (
